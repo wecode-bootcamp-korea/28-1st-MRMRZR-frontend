@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+
+.Nav {
+  position: fixed;
+  width: 100%;
+
+  .navInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1200px;
+    height: 72px;
+
+    h1 {
+      text-align: center;
+      letter-spacing: 5px;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: $font-logo;
+    }
+
+    ul.categories {
+      left: -150px;
+      font-size: 15px;
+    }
+
+    ul.myMenu {
+      font-size: 13px;
+      color: #1b1b1b;
+    }
+
+    > ul > li {
+      display: inline-block;
+      margin-left: 20px;
+      cursor: pointer;
+      padding: 2rem 0;
+
+      &.woman:hover .dropdown {
+        transform: scale(1);
+      }
+    }
+
+    .searchBox {
+      position: absolute;
+      right: calc(50vw - 335px);
+      transform-origin: right;
+      transform: scale(0, 1);
+      transition: transform 0.5s ease-out;
+
+      svg {
+        margin-right: 2px;
+      }
+
+      input {
+        width: 90px;
+        border: none;
+        border-bottom: 1px solid #000;
+      }
+
+      &.activated {
+        transform: scale(1);
+      }
+    }
+  }
+}
