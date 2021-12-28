@@ -1,0 +1,46 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+$font-main: 24px;
+$font-des: 13px;
+$font-price: 11px;
+
+.productListContent {
+  @include flex(center, center);
+  flex-direction: column;
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 72px;
+  padding: 10px;
+  background-color: #ffff;
+
+  .productListHeader {
+    @include flex;
+    font-size: $font-main;
+    height: 100px;
+  }
+
+  .productContour {
+    width: 100%;
+    border-bottom: 0.8px $main-gray solid;
+  }
+
+  .filterButtons {
+    @include flex(space-between, center);
+    width: 100%;
+    height: 30px;
+    margin: 10px 0px;
+    padding: 10px;
+    font-size: $font-des;
+    cursor: pointer;
+  }
+
+  .productList {
+    @include flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    height: auto;
+    padding: 10px;
+  }
+}
