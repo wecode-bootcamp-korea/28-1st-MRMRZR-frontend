@@ -12,11 +12,11 @@ export default function Product(props) {
       </div>
       <div className="description">
         <div className="description__name">{name}</div>
-        <div className="description__price">{price}</div>
+        <div className="description__price">{price} 원</div>
         <div className="description__color">black</div>
         <div className="description__wishButton">
-          <div className="productFilter"></div>
-          <FaRegHeart></FaRegHeart>
+          <div className="productFilter" />
+          <FaRegHeart />
         </div>
       </div>
     </div>

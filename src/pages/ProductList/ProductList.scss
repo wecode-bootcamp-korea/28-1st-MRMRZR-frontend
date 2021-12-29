@@ -28,12 +28,20 @@ $font-price: 11px;
 
   .filterButtons {
     @include flex(space-between, center);
+    position: relative;
     width: 100%;
     height: 30px;
     margin: 10px 0px;
     padding: 10px;
     font-size: $font-des;
-    cursor: pointer;
+
+    .filterButton {
+      cursor: pointer;
+
+      span {
+        margin-right: 4px;
+      }
+    }
   }
 
   .productList {

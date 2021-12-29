@@ -1,0 +1,25 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+$font-des: 13px;
+
+.filterModal {
+  position: absolute;
+  flex-direction: column;
+  top: calc($font-des + 20px);
+  width: 150px;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid $main-gray;
+  margin: 0 auto;
+  padding: 20px 10px;
+
+  label {
+    width: 100%;
+    margin-bottom: 5px;
+
+    input[type='checkbox'] {
+      margin-right: 10px;
+    }
+  }
+}
