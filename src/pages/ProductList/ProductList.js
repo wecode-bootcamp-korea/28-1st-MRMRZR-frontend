@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import Product from './components/Product';
 import FilterButton from './components/FilterButton';
 import './ProductList.scss';
@@ -27,7 +29,15 @@ function ProductList() {
       <div className="productList">
         {productList.map(product => {
           const { product_id, ...productInfo } = product;
-          return <Product key={product_id} {...productInfo} />;
+          return (
+            <Link
+              className="productLink"
+              key={product_id}
+              to={`product-detail/${product_id}`}
+            >
+              <Product key={product_id} {...productInfo} />
+            </Link>
+          );
         })}
       </div>
     </div>

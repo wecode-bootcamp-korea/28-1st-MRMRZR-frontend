@@ -6,7 +6,7 @@ export default function Product(props) {
   const { url, name, price } = props;
 
   return (
-    <div className="product">
+    <div>
       <div className="imageHolder">
         <img alt={`${name}`} src={url} />
       </div>
