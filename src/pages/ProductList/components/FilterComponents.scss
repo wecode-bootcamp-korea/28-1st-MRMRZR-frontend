@@ -1,0 +1,25 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+$font-des: 13px;
+
+.filterButton {
+  @include flex(flex-start, center);
+  flex-direction: column;
+
+  div {
+    position: relative;
+    @include flex(space-between, center);
+    width: 100px;
+
+    .filterModal {
+      position: absolute;
+      top: calc($font-des + 10px);
+      width: 200px;
+      height: 300px;
+      background-color: #fff;
+      border: 1px solid $main-gray;
+      margin: 0 auto;
+    }
+  }
+}
