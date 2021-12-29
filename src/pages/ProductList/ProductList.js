@@ -21,8 +21,6 @@ function ProductList() {
       .then(data => setProductList(data));
   }, []);
 
-  const filterSize = productList.filter(product => product.size);
-
   const showFilterModal = () => {
     return !isClicked ? setIsClicked(true) : setIsClicked(false);
   };
