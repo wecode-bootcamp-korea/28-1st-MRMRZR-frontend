@@ -4,6 +4,8 @@
 .Nav {
   position: fixed;
   width: 100%;
+  z-index: 100;
+  background: #fff;
 
   .navInner {
     @include mixin.flex($justify: space-between);
