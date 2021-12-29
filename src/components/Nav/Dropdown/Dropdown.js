@@ -4,6 +4,7 @@ import './Dropdown.scss';
 export default function Dropdown({ entered }) {
   return (
     <ul className="dropdown">
+      <li>New Arrivals</li>
       <li>아우터</li>
       <li>상의</li>
       <li>하의</li>

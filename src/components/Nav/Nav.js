@@ -21,11 +21,11 @@ export default function App() {
           <li>
             <Link to="/Main">New Arrivals</Link>
           </li>
-          <li className="woman">
-            <Link to="/Main">WOMAN</Link>
+          <li className="women">
+            <Link to="/Main">WOMEN</Link>
             <Dropdown />
           </li>
-          <li>MAN</li>
+          <li>MEN</li>
           <li>KIDS</li>
           <li>BEAUTY</li>
           <li>SHOES &amp; BAGS</li>
