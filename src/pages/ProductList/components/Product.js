@@ -8,13 +8,13 @@ export default function Product(props) {
   return (
     <div>
       <div className="imageHolder">
-        <img alt={`${name}`} src={url} />
+        <img alt={name} src={url} />
       </div>
       <div className="description">
-        <div className="description__name">{name}</div>
-        <div className="description__price">{price} 원</div>
-        <div className="description__color">black</div>
-        <div className="description__wishButton">
+        <div className="name">{name}</div>
+        <div className="price">{price} 원</div>
+        <div className="color">black</div>
+        <div className="wishButton">
           <div className="productFilter" />
           <FaRegHeart />
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './FilterModal.scss';
+import './FilterDropDown.scss';
 
-export default function FilterModal({ isClicked }) {
+export default function FilterDropDown({ isClicked }) {
   const [selectedSize, setSelectedSize] = useState([]);
   const selectedSizeList = [...selectedSize];
 
@@ -14,10 +14,12 @@ export default function FilterModal({ isClicked }) {
     }
   };
 
+  // filter로 해당 클릭된 버튼만 리스트에 새로 담아줌.
+  // selectedSizeList의 버튼들에 해당하는 사이즈만 화면에 어떻게 출력할지 생각.
+
   return (
     <form
-      className="filterModal"
-      style={isClicked ? { display: 'flex' } : { display: 'none' }}
+      className={`filterDropDownWrapper ${isClicked ? 'show' : 'hide'}`}
       onClick={clickSelectSize}
     >
       <label>

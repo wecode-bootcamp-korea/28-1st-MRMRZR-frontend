@@ -2,10 +2,10 @@
 @import '../../../styles/variables';
 
 $font-main: 24px;
-$font-des: 13px;
+$font-description: 13px;
 $font-price: 11px;
 
-$margin-des: 6px;
+$margin-description: 6px;
 
 .imageHolder {
   height: 340px;
@@ -22,25 +22,25 @@ $margin-des: 6px;
   height: 80px;
   padding: 10px;
 
-  &__name {
-    font-size: $font-des;
-    margin-bottom: $margin-des;
+  .name {
+    font-size: $font-description;
+    margin-bottom: $margin-description;
   }
 
-  &__price {
+  .price {
     font-size: $font-price;
-    margin-bottom: $margin-des;
+    margin-bottom: $margin-description;
   }
 
-  &__color {
+  .color {
     font-size: $font-price;
   }
 
-  &__wishButton {
+  .wishButton {
     position: absolute;
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: $font-des;
+    font-size: $font-description;
   }
 }

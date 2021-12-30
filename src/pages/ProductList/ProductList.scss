@@ -15,18 +15,18 @@ $font-price: 11px;
   padding: 10px;
   background-color: #ffff;
 
-  .productListHeader {
+  .header {
     @include flex;
     font-size: $font-main;
     height: 100px;
   }
 
-  .productContour {
+  .contour {
     width: 100%;
     border-bottom: 0.8px $main-gray solid;
   }
 
-  .filterButtons {
+  .filterButtonWrapper {
     @include flex(space-between, center);
     position: relative;
     width: 100%;
@@ -44,7 +44,7 @@ $font-price: 11px;
     }
   }
 
-  .productList {
+  .productListWrapper {
     @include flex;
     flex-wrap: wrap;
     width: 1200px;

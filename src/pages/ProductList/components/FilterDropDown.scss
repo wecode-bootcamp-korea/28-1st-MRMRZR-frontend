@@ -1,12 +1,12 @@
 @import '../../../styles/mixin';
 @import '../../../styles/variables';
 
-$font-des: 13px;
+$font-description: 13px;
 
-.filterModal {
+.filterDropDownWrapper {
   position: absolute;
   flex-direction: column;
-  top: calc($font-des + 20px);
+  top: calc($font-description + 20px);
   width: 150px;
   height: auto;
   background-color: #fff;
@@ -22,4 +22,12 @@ $font-des: 13px;
       margin-right: 10px;
     }
   }
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
 }

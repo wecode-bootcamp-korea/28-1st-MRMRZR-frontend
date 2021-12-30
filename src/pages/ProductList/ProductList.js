@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import Product from './components/Product';
-import FilterModal from './components/FilterModal';
+import FilterDropDown from './components/FilterDropDown';
 
 import './ProductList.scss';
 
@@ -11,34 +11,36 @@ const FETCH_URL = 'http://localhost:3000/';
 
 function ProductList() {
   const [productList, setProductList] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isDropDownClicked, setIsDropDownClicked] = useState(false);
 
   useEffect(() => {
-    fetch(`${FETCH_URL}/data/ProductListData/ProductListData.json`, {
-      method: 'GET',
-    })
+    fetch(`${FETCH_URL}/data/ProductListData/ProductListData.json`)
       .then(res => res.json())
       .then(data => setProductList(data));
   }, []);
 
-  const showFilterModal = () => {
-    return !isClicked ? setIsClicked(true) : setIsClicked(false);
+  const filterSize = productList.filter(product => product.size);
+
+  const showFilterDropDown = () => {
+    return !isDropDownClicked
+      ? setIsDropDownClicked(true)
+      : setIsDropDownClicked(false);
   };
 
   return (
     <div className="productListContent">
-      <div className="productListHeader">New Arrivals</div>
-      <div className="productContour" />
-      <div className="filterButtons">
+      <div className="header">New Arrivals</div>
+      <div className="contour" />
+      <div className="filterButtonWrapper">
         <div className="filterButton">
           <span>사이즈</span>
-          <button type="button" onClick={showFilterModal}>
+          <button type="button" onClick={showFilterDropDown}>
             <IoIosArrowDown />
           </button>
         </div>
-        <FilterModal isClicked={isClicked} />
+        <FilterDropDown isClicked={isDropDownClicked} />
       </div>
-      <div className="productList">
+      <div className="productListWrapper">
         {productList.map(product => {
           const { product_id, ...productInfo } = product;
           return (
