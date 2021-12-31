@@ -20,7 +20,7 @@ $font-description: 13px;
     }
   }
 
-  .사이즈 {
+  .size {
     position: absolute;
     flex-direction: column;
     top: calc($font-description + 20px);
@@ -41,7 +41,7 @@ $font-description: 13px;
     }
   }
 
-  .SORTBY {
+  .sort {
     position: absolute;
     flex-direction: column;
     top: calc($font-description + 20px);

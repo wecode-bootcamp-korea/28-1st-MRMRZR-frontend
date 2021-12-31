@@ -5,11 +5,11 @@ import DropDownBox from './DropDownBox';
 import './DropDowns.scss';
 
 const STANDARD_LIST = {
-  사이즈: ['XS', 'S', 'M', 'L', 'XL'],
-  SORTBY: ['가격낮은순', '가격높은순'],
+  size: ['XS', 'S', 'M', 'L', 'XL'],
+  sorted: ['가격낮은순', '가격높은순'],
 };
 
-export default function DropDown({ standard }) {
+export default function DropDown({ name, standard, query }) {
   const [isDropDownClicked, setIsDropDownClicked] = useState(false);
   const showFilterDropDown = () => {
     return !isDropDownClicked
@@ -20,7 +20,7 @@ export default function DropDown({ standard }) {
   return (
     <div>
       <div className="dropDownButtons">
-        <span>{standard}</span>
+        <span>{name}</span>
         <button type="button" onClick={showFilterDropDown}>
           <IoIosArrowDown />
         </button>
@@ -28,7 +28,8 @@ export default function DropDown({ standard }) {
       <DropDownBox
         isClicked={isDropDownClicked}
         standard={standard}
-        standardList={STANDARD_LIST[standard]}
+        query={query}
+        queryList={STANDARD_LIST[query]}
       />
     </div>
   );
