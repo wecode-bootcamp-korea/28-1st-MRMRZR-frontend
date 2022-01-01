@@ -17,7 +17,19 @@ $font-price: 11px;
   .header {
     @include flex;
     font-size: $font-main;
-    height: 100px;
+    height: 80px;
+  }
+
+  .headerDescription {
+    font-size: 13px;
+    text-align: center;
+    line-height: 2;
+    margin: 20px auto;
+
+    button {
+      border-bottom: 1px solid $main-gray;
+      cursor: pointer;
+    }
   }
 
   .contour {
@@ -35,7 +47,7 @@ $font-price: 11px;
     .productLink {
       @include flex;
       width: calc(100% / 4 - 20px);
-      height: 420px;
+      height: 480px;
       margin: 30px 10px;
     }
   }

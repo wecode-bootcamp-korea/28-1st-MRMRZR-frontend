@@ -13,6 +13,11 @@ $font-description: 13px;
   font-size: $font-description;
 
   .dropDownButtons {
+    &:hover {
+      color: $main-black;
+    }
+
+    color: $sub-gray;
     cursor: pointer;
 
     span {
@@ -34,9 +39,11 @@ $font-description: 13px;
     label {
       width: 100%;
       margin-bottom: 5px;
+      color: $sub-gray;
 
       input[type='checkbox'] {
         margin-right: 10px;
+        color: $sub-gray;
       }
     }
   }
@@ -56,9 +63,11 @@ $font-description: 13px;
     label {
       width: 100%;
       margin-bottom: 5px;
+      color: $sub-gray;
 
       input[type='checkbox'] {
         margin-right: 10px;
+        color: $sub-gray;
       }
     }
   }
