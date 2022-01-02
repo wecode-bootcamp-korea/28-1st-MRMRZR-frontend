@@ -9,26 +9,26 @@ const STANDARD_LIST = {
   sorted: ['가격낮은순', '가격높은순'],
 };
 
-export default function DropDown({ name, standard, query, checkedValue }) {
+export default function DropDown({ name, standard, checkedSize, sort }) {
   const [isDropDownActive, setIsDropDownActive] = useState(false);
-  const toggleDropDown = () => {
-    setIsDropDownActive(!isDropDownActive);
-  };
 
   return (
     <div>
       <div className="dropDownButtons">
         <span>{name}</span>
-        <button type="button" onClick={toggleDropDown}>
+        <button
+          type="button"
+          onClick={() => setIsDropDownActive(!isDropDownActive)}
+        >
           <IoIosArrowDown />
         </button>
       </div>
       <DropDownBox
-        isActive={isDropDownActive}
         standard={standard}
-        query={query}
-        queryList={STANDARD_LIST[query]}
-        checkedValue={checkedValue}
+        sort={sort}
+        standardList={STANDARD_LIST[standard]}
+        isDropDownActive={isDropDownActive}
+        checkedSize={checkedSize}
       />
     </div>
   );

@@ -1,30 +1,27 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
 import './DropDowns.scss';
 
 export default function DropDownBox({
-  isActive,
-  query,
-  queryList,
+  isDropDownActive,
+  standardList,
   standard,
-  checkedValue,
+  sort,
+  checkedSize,
 }) {
-  const dropDownStyle = query === 'size' ? 'size' : 'sort';
-  const showDropDown = isActive ? 'show' : 'hide';
+  const dropDownStyle = standard === 'size' ? 'size' : 'sort';
+  const showDropDown = isDropDownActive ? 'show' : 'hide';
 
   return (
-    <form className={`${dropDownStyle} ${showDropDown}`}>
-      {queryList.map((item, idx) => (
-        <label key={query + idx} onClick={checkedValue}>
-          <input
-            type="checkbox"
-            standard={standard}
-            name={query}
-            value={item}
-          />
+    <div className={`${dropDownStyle} ${showDropDown}`}>
+      {standardList.map((item, idx) => (
+        <label key={idx} onChange={checkedSize}>
+          <input type="checkbox" standard={standard} value={item} />
           {item}
         </label>
       ))}
-    </form>
+      <button className="sizeButton" onClick={sort}>
+        go to filter
+      </button>
+    </div>
   );
 }

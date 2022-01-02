@@ -22,6 +22,7 @@ $font-description: 13px;
 
     span {
       margin-right: 4px;
+      font-weight: 300;
     }
   }
 
@@ -35,6 +36,7 @@ $font-description: 13px;
     border: 1px solid $main-gray;
     margin: 0 auto;
     padding: 20px 10px;
+    font-weight: 300;
 
     label {
       width: 100%;
@@ -45,6 +47,15 @@ $font-description: 13px;
         margin-right: 10px;
         color: $sub-gray;
       }
+    }
+
+    .sizeButton {
+      &:hover {
+        color: #0095f6;
+      }
+      margin-top: 10px;
+      color: $main-black;
+      cursor: pointer;
     }
   }
 

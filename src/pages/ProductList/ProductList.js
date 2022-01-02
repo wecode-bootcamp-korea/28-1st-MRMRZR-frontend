@@ -1,43 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Product from './components/Product';
 import DropDown from './components/DropDown';
-
 import './ProductList.scss';
 
 function ProductList() {
-  const navigate = useNavigate();
-  const { pathname, search } = useLocation();
   const [productList, setProductList] = useState([]);
-  const [fetchUrl, setFetchUrl] = useState([]);
+  const [selectSizeList, setSelectSizeList] = useState([]);
+
+  const navigate = useNavigate();
+
+  function sort() {
+    const sizeSort = selectSizeList.map(size => `size=${size}`).join('&');
+    navigate(`?${sizeSort}`);
+
+    fetch(`sort?${sizeSort}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(data);
+      });
+  }
+
+  const checkedSize = event => {
+    const { type, checked, value } = event.target;
+    if (type === 'checkbox' && checked) {
+      setSelectSizeList(size => [...size, value]);
+    } else {
+      setSelectSizeList(size => size.filter(el => el !== value));
+    }
+  };
 
   useEffect(() => {
     fetch('/data/ProductListData/ProductListData.json')
       .then(res => res.json())
       .then(data => setProductList(data));
   }, []);
-
-  useEffect(() => {
-    fetch(`${pathname}${search}${fetchUrl.join('&')}`)
-      .then(res => res.json())
-      .then(result => {
-        setProductList(result);
-      });
-  }, [fetchUrl]);
-
-  const checkedValue = event => {
-    const { type, checked, standard, name, value } = event.target;
-    navigate(`/product-list/${standard}?${name}=${value}`);
-
-    if (type === 'checkbox' && checked) {
-      const url = `${search.slice(1)}`;
-      setFetchUrl(fetchUrl.concat(url));
-    } else {
-      const removeIndex = fetchUrl.indexOf(name);
-      setFetchUrl(fetchUrl.splice(removeIndex, 1));
-    }
-  };
 
   return (
     <div className="productListContent">
@@ -52,16 +55,18 @@ function ProductList() {
       <div className="dropDownWrapper">
         <DropDown
           name="사이즈"
-          standard="filter"
-          query="size"
-          checkedValue={checkedValue}
+          standard="size"
+          checkedSize={checkedSize}
+          sort={sort}
         />
+        <button>CLEAN ALL</button>
+        {/* 가격 오름차순, 내림차순 추가 구현중 ...
         <DropDown
           name="SORT BY"
           standard="sort"
           query="sorted"
           checkedValue={checkedValue}
-        />
+        /> */}
       </div>
       <div className="productListWrapper">
         {productList.map(product => {
