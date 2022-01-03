@@ -1,0 +1,11 @@
+.productDetail {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding-top: 72px;
+
+  .productDetailWrap {
+    display: flex;
+    width: 1200px;
+  }
+}
