@@ -12,7 +12,7 @@ export default function SizeFilter({
   return (
     <div className={`sizeFilter ${showDropDown}`}>
       {standardList.map((item, idx) => (
-        <label key={idx} onChange={checkedSize}>
+        <label key={item + idx} onChange={checkedSize}>
           <input type="checkbox" name={standard} value={item} />
           {item}
         </label>
