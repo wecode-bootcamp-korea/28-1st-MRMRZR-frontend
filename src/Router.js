@@ -13,9 +13,8 @@ function Router() {
       <Routes>
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/product-list" element={<ProductList />} />
-        <Route path="/product-list/:size" element={<ProductList />} />
-        <Route path="/product-detail" element={<ProductDetail />}>
+        <Route path="/product" element={<ProductList />} />
+        <Route path="/product/detail" element={<ProductDetail />}>
           <Route path=":product_id" element={<ProductDetail />} />
         </Route>
       </Routes>

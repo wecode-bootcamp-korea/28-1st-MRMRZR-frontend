@@ -8,14 +8,36 @@ import './ProductList.scss';
 function ProductList() {
   const [productList, setProductList] = useState([]);
   const [selectSizeList, setSelectSizeList] = useState([]);
+  const [selectSort, setSelectSort] = useState('');
 
   const navigate = useNavigate();
 
-  function sort() {
-    const sizeSort = selectSizeList.map(size => `size=${size}`).join('&');
-    navigate(`?${sizeSort}`);
+  const clickedSort = event => {
+    const { className } = event.target;
+    setSelectSort(className);
+  };
 
-    fetch(`sort?${sizeSort}`, {
+  const checkedSize = event => {
+    const { type, checked, value, name } = event.target;
+    const sizeType = type === 'checkbox' && name === 'size';
+
+    if (sizeType && checked) {
+      setSelectSizeList(size => [...size, value]);
+    } else {
+      setSelectSizeList(size => size.filter(el => el !== value));
+    }
+  };
+
+  const getDataBySort = () => {
+    const filterQuery = selectSizeList.map(size => `size=${size}`).join('&');
+    let sortQuery = '';
+
+    if (selectSort !== '') sortQuery = `&order=price_${selectSort}`;
+
+    const queryString = filterQuery.concat(sortQuery);
+    navigate(`?${queryString}`);
+
+    fetch(`?${queryString}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -25,16 +47,11 @@ function ProductList() {
       .then(data => {
         setProductList(data);
       });
-  }
-
-  const checkedSize = event => {
-    const { type, checked, value } = event.target;
-    if (type === 'checkbox' && checked) {
-      setSelectSizeList(size => [...size, value]);
-    } else {
-      setSelectSizeList(size => size.filter(el => el !== value));
-    }
   };
+
+  useEffect(() => {
+    getDataBySort();
+  }, [selectSizeList, selectSort]);
 
   useEffect(() => {
     fetch('/data/ProductListData/ProductListData.json')
@@ -53,20 +70,28 @@ function ProductList() {
       </div>
       <div className="contour" />
       <div className="dropDownWrapper">
-        <DropDown
-          name="사이즈"
-          standard="size"
-          checkedSize={checkedSize}
-          sort={sort}
-        />
-        <button>CLEAN ALL</button>
-        {/* 가격 오름차순, 내림차순 추가 구현중 ...
-        <DropDown
-          name="SORT BY"
-          standard="sort"
-          query="sorted"
-          checkedValue={checkedValue}
-        /> */}
+        <div className="filter">
+          <DropDown
+            name="사이즈"
+            standard="size"
+            checkedSize={checkedSize}
+            sort={getDataBySort}
+          />
+          <button
+            className="resetFilterButton"
+            // onClick={getDataReset}
+          >
+            CLEAN ALL
+          </button>
+        </div>
+        <div className="sort">
+          <button className="ascending" onClick={clickedSort}>
+            오름차순
+          </button>
+          <button className="descending" onClick={clickedSort}>
+            내림차순
+          </button>
+        </div>
       </div>
       <div className="productListWrapper">
         {productList.map(product => {
@@ -74,7 +99,7 @@ function ProductList() {
           return (
             <Link
               className="productLink"
-              to={`/product-detail/${product_id}`}
+              to={`/product/detail/${product_id}`}
               key={product_id}
             >
               <Product key={product_id} {...productInfo} />

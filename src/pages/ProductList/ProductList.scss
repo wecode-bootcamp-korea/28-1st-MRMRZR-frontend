@@ -3,6 +3,7 @@
 
 $font-main: 24px;
 $font-price: 11px;
+$font-description: 13px;
 
 .productListContent {
   @include flex(center, center);
@@ -35,6 +36,46 @@ $font-price: 11px;
   .contour {
     width: 100%;
     border-bottom: 0.8px $main-gray solid;
+  }
+
+  .dropDownWrapper {
+    @include flex(space-between, center);
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0px;
+    padding: 10px;
+    color: $sub-gray;
+    font-size: $font-description;
+    font-weight: 300;
+
+    .filter {
+      @include flex;
+
+      .resetFilterButton {
+        &:hover {
+          color: $main-black;
+        }
+
+        margin-left: 4px;
+        cursor: pointer;
+      }
+    }
+
+    .sort {
+      @include flex;
+
+      button {
+        width: 100px;
+        height: 25px;
+        margin: 0 4px;
+        border: 1px solid black;
+        background-color: $main-black;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
   }
 
   .productListWrapper {

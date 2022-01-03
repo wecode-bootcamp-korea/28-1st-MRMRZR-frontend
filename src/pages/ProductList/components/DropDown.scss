@@ -1,0 +1,58 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+$font-description: 13px;
+
+.dropDownButtons {
+  &:hover {
+    color: $main-black;
+  }
+
+  color: $sub-gray;
+  cursor: pointer;
+
+  span {
+    margin-right: 4px;
+    font-weight: 300;
+  }
+}
+
+.sizeFilter {
+  position: absolute;
+  flex-direction: column;
+  top: calc($font-description + 20px);
+  width: 150px;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid $main-gray;
+  margin: 0 auto;
+  padding: 20px 10px;
+
+  label {
+    width: 100%;
+    margin-bottom: 5px;
+    color: $sub-gray;
+
+    input[type='checkbox'] {
+      margin-right: 10px;
+      color: $sub-gray;
+    }
+  }
+
+  .sizeButton {
+    &:hover {
+      color: #0095f6;
+    }
+    margin-top: 10px;
+    color: $main-black;
+    cursor: pointer;
+  }
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
