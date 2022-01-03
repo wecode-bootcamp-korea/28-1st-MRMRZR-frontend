@@ -20,7 +20,7 @@
 
   .galleryBars {
     position: relative;
-    width: 10%;
+    width: 5%;
 
     .progressBar {
       position: absolute;
@@ -51,7 +51,7 @@
       width: 90%;
 
       li {
-        margin-top: 5px;
+        margin-bottom: 5px;
         height: 80px;
         background: #ccc;
         cursor: pointer;
