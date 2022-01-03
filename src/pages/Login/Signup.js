@@ -1,93 +1,164 @@
-import React from 'react';
-import { BsExclamationCircle } from '';
+import React, { useState, useEffect } from 'react';
 
+// import { BsExclamationCircle } from '';
+import '../Login/SignUp.scss';
 
+export default function SignUp() {
+  const [userEmail, setUserEmail] = useState('');
+  const [userPW, setUserPW] = useState('');
+  const [user2PW, setUser2Pw] = useState('');
+  const [username, setUsername] = useState('');
+  const [isSuccess, setIsSuccess] = useState('');
 
-function signup () {
-  return (  
-  <main className='user-info-container'>
-    1
-  {/* <section className='user-info-content'>
+  const handleEmail = event => {
+    setUserEmail(event.target.value);
+  };
 
- // sign-up //     
-  <div className='main-class-header'>
-   <h1 class='main-class-header'>
-       <span>개인 정보</span>
-   </h1>
-  </div>
-  <form className= 'personal-info' id='adress form' autocomplete='off' method='POST' /> 
-   <div className= 'form_column' data-name='email' > 
-      <div className='form-email-input-label' placeholder='' type='text'>
-        <input className='form-email-input'> </input>
-        <label className='form-email-input' for='' id=' ' > 이메일 </label>
+  const handlePW = event => {
+    setUserPW(event.target.value);
+  };
+
+  const handle2PW = event => {
+    setUser2Pw(event.target.value);
+  };
+
+  const handlename = event => {
+    setUsername(event.target.value);
+  };
+
+  const joinUser = event => {
+    event.preventDefault();
+    if (userPW === user2PW) {
+      const userData = {
+        email: userEmail,
+        password: userPW,
+        name: username,
+      };
+
+      fetch('http://cd66-59-187-202-238.ngrok.io/users/signup', {
+        method: 'POST',
+        body: JSON.stringify(userData),
+      })
+        .then(res => res.json())
+        .then(data => setIsSuccess(data));
+    }
+  };
+
+  useEffect(() => {
+    if (typeof setIsSuccess !== 'undefined') console.log(isSuccess);
+  }, [isSuccess]);
+
+  return (
+    <section className="signup">
+      <div className="signupContainer">
+        <header className="main-class-header">
+          <h1 className="main-class-header-name">개인 정보</h1>
+        </header>
+        <div className="signup-input">
+          <div className="signup-email">
+            <div className="email-input">
+              <div className="email-input-type">
+                <input
+                  type="text"
+                  id="id"
+                  class="int"
+                  maxlength="20"
+                  placeholder="이메일"
+                  onChange={handleEmail}
+                  value={userEmail}
+                />
+              </div>
+              <div className="email-input-error">
+                {/* <span>필수 입력란입니다.</span> */}
+              </div>
+            </div>
+          </div>
+          <div className="password-input">
+            <div className="signup-pw">
+              <div className="signup-pw-input">
+                <div className="signup-pw-input-type">
+                  <input
+                    type="text"
+                    id="id"
+                    class="int"
+                    maxlength="20"
+                    placeholder="비밀번호"
+                    onChange={handlePW}
+                    value={userPW}
+                  />
+                </div>
+                <div className="password-input-error">
+                  {/* <span>필수 입력란입니다.</span> */}
+                </div>
+              </div>
+            </div>
+            <div className="signup-2password">
+              <div className="signup-2pw-input">
+                <div className="signup-2pw-input-type">
+                  <input
+                    type="text"
+                    id="id"
+                    class="int"
+                    maxlength="20"
+                    placeholder="비밀번호 확인"
+                    onChange={handle2PW}
+                    value={user2PW}
+                  />
+                </div>
+                <div className="password-onemore-input-error">
+                  {/* <span>필수 입력란입니다.</span> */}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="signup-name">
+            <div className="signup-name-input">
+              <div className="signup-name-input-type">
+                <input
+                  type="text"
+                  id="id"
+                  class="int"
+                  maxlength="20"
+                  placeholder="이름"
+                  onChange={handlename}
+                  value={username}
+                />
+              </div>
+              <div className="name-input-error">
+                <span />
+                {/* <span>필수 입력란입니다.</span> */}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="checkboxs">
+          <div className="checkbox-each">
+            <input type="checkbox" />
+            <span>모든 항목에 동의</span>
+          </div>
+          <div className="checkbox-each">
+            <input type="checkbox" />
+            <span>*만 14세 이상입니다. </span>
+          </div>
+          <div className="checkbox-each">
+            <input type="checkbox" />
+            <span>* 필수적 개인정보의 수집 및 이용에 대한 동의</span>
+          </div>
+          <div className="checkbox-each">
+            <input type="checkbox" />
+            <span>선택적 개인정보의 수집 및 이용에 대한 동의</span>
+          </div>
+          <div className="checkbox-each">
+            <input type="checkbox" />
+            <span>광고성 정보 수신에 대한 동의</span>
+          </div>
+        </div>
+        <div className="signup-button-area">
+          <button className="signup-button" type="button" onClick={joinUser}>
+            <span>계정만들기</span>
+          </button>
+        </div>
       </div>
-      <div className= 'form-email-input-error'>
-       <span className='email-title'>이메일</span>
-       <svg className='email-title-info'> </svg>
-       <path></path>
-       <span> 필수 입력란입니다. </span>
-      </div>
-   </div>
-   <div className= 'form_column' form_column--empty> </div>
-
-      <div className= 'form_column' data-name='password' > </div>
-      <div className='form-pw-input-label' placeholder='' type='text'>
-        <input className='form-pw-input'> </input>
-        <label className='form-pw-input' for='' id=' ' > 비밀번호 </label>
-      </div>
-      <div className= 'form-pw-input-error'>
-       <span className='email-title'>비밀번호</span>
-       <svg className='email-title-info'> </svg>
-       <path></path>
-       <span> 필수 입력란입니다. </span>
-      </div>
-
-   <div className= 'form_column' data-name='password-confirm' > </div>
-   <div className='form-email-input-label' placeholder='' type='text'>
-        <input className='form-email-input'> </input>
-        <label className='form-email-input' for='' id=' ' > 비밀번호를 한 번 더 입력해 주십시오. </label>
-      </div>
-      <div className= 'form-email-input-error'>
-       <span className='email-title'>비밀번호를 한 번 더 입력해 주십시오.</span>
-       <svg className='email-title-info'> </svg>
-       <path></path>
-       <span> 필수 입력란입니다. </span>
-      </div>
-   <div className= 'form_column' form_column--empty> </div>
-
-   <div className= 'form_column' data-name='name'> </div>
-   <div className='form-email-input-label' placeholder='' type='text'>
-        <input className='form-email-input'> </input>
-        <label className='form-email-input' for='' id=' ' > 이름 </label>
-      </div>
-      <div className= 'form-email-input-error'>
-       <span className='email-title'>이름</span>
-       <svg className='email-title-info'> </svg>
-       <path></path>
-       <span> 필수 입력란입니다. </span>
-      </div>
-
- // sign-up-checkbox //    
-    <label> 
-       <div className='form_column' data-name='checkAll'>
-       <div className='form-input'></div>
-       <div className='form-input-checkbox'></div>
-    <span></span>
-
-     
-// signup btn //
-     <div className='signup-button-area'>
-	   <button type='button'>
-		 <span>계정 만들기</span>
-	   </button>
-     </div>
-     
-  </>
-
-  <BsExclamationCircle/>
-
-
-  </section> */}
-  </main>
-  )
-  export default Signup;
+    </section>
+  );
+}

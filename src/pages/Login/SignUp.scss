@@ -1,0 +1,84 @@
+.signup {
+  width: 1600px;
+  padding: 0 20px;
+  .signupContainer {
+    width: 100%;
+    .main-class-header {
+      h1 {
+        font-size: 48px;
+      }
+    }
+
+    .signup-input {
+      margin-top: 36px;
+      line-height: 25px;
+      .signup-email {
+        .email-input {
+          .email-input-type {
+          }
+          .email-input-error {
+          }
+        }
+      }
+      .password-input {
+        display: flex;
+
+        .signup-pw {
+          margin-right: 10px;
+          .signup-pw-input {
+            .signup-pw-input-type {
+            }
+            .password-input-error {
+            }
+          }
+        }
+        .signup-2password {
+          .signup-2pw-input {
+            .signup-2pw-input-type {
+            }
+            .password-onemore-input-error {
+            }
+          }
+        }
+        .signup-name {
+          .signup-name-input {
+            .signup-name-input-type {
+            }
+            .name-input-error {
+            }
+          }
+        }
+      }
+    }
+    .checkboxs {
+      margin-top: 36px;
+      line-height: 30px;
+
+      .checkbox-each {
+        input {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .signup-button-area {
+      margin-top: 36px;
+    }
+  }
+}
+
+.signup-button {
+  min-width: 192px;
+  height: 40px;
+  // width: auto;
+  background-color: black;
+  color: white;
+
+  .signup-button-area {
+    // display: flex;
+    // flex-flow: column nowrap;
+    // width: 100%;
+    span {
+    }
+  }
+}
