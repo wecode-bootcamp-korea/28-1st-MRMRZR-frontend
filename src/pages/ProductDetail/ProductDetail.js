@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useParams } from 'react';
 import ProductGallery from './ProductGallery/ProductGallery';
 import ProductDescription from './ProductDescription/ProductDescription';
 import './ProductDetail.scss';
 
 function ProductDetail() {
   const [productVal, setProductVal] = useState({});
+  const params = useParams();
 
   // setProductVal({
   //   id: 1,
@@ -26,7 +27,7 @@ function ProductDetail() {
   // });
 
   useEffect(() => {
-    fetch('http://10.58.5.4:8000/products/detail/1')
+    fetch(`http://10.58.5.4:8000/products/detail/${params.id}`)
       .then(res => res.json())
       .then(res => {
         setProductVal(res.results);
