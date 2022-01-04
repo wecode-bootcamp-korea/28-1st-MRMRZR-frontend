@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Dropdown from './Dropdown/Dropdown';
 import { AiOutlineSearch } from 'react-icons/ai';
+import Dropdown from './Dropdown/Dropdown';
 import './Nav.scss';
 
-export default function App() {
+export default function Nav() {
   const [searchActivated, setSearchActivated] = useState(false);
 
   return (
