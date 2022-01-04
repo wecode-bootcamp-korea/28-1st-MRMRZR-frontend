@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import './ProductGallery.scss';
 
-export default function ProductGallery() {
+export default function ProductGallery({ productVal }) {
   const [windowIdx, setWindowIdx] = useState(0);
+  const testImgs = [
+    './images/ProductDetail/testimg1.jpg',
+    './images/ProductDetail/testimg2.jpg',
+    './images/ProductDetail/testimg3.jpg',
+  ];
 
   const moveGalleryByWindow = e => {
     setWindowIdx(Number(e.target.id) - 1);
@@ -21,9 +26,13 @@ export default function ProductGallery() {
           style={{ transform: `translateY(-${windowIdx * 600}px)` }}
           onWheel={moveGalleryByScroll}
         >
-          <li>img1</li>
-          <li>img2</li>
-          <li>img3</li>
+          {testImgs.map((el, i) => {
+            return (
+              <li key={i}>
+                <img src={el} alt="" />
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="galleryBars">
@@ -35,15 +44,13 @@ export default function ProductGallery() {
       </div>
       <div className="galleryWindow">
         <ul>
-          <li id="1" onClick={moveGalleryByWindow}>
-            win1
-          </li>
-          <li id="2" onClick={moveGalleryByWindow}>
-            win2
-          </li>
-          <li id="3" onClick={moveGalleryByWindow}>
-            win3
-          </li>
+          {testImgs.map((el, i) => {
+            return (
+              <li key={i} onClick={moveGalleryByWindow}>
+                <img id={String(i + 1)} src={el} alt="" />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

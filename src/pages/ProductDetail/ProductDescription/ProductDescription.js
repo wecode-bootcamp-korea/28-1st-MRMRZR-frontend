@@ -2,22 +2,18 @@ import React from 'react';
 import ProductSize from './ProductSize/ProductSize';
 import './ProductDescription.scss';
 
-export default function ProductDescription() {
-  const sizes = ['XS', 'S', 'M', 'L', 'XL'];
-
+export default function ProductDescription({ productVal }) {
   return (
     <div className="productDescription">
-      <h2>에코 레더 후드 베스트</h2>
-      <p className="itemCode">Item code</p>
-      <p className="desctiption">
-        양 방향 신축성이 뛰어난 소재로 제조된 슬림핏 팬츠. 앞면 포켓과 뒷면
-        파이핑 포켓 디테일. 앞면 지퍼와 버튼 여밈.
-      </p>
-      <div className="price">99,000 원</div>
+      <h2>{productVal.name}</h2>
+      <p className="itemCode">{productVal.product_number}</p>
+      <p className="desctiption">{productVal.description}</p>
+      <div className="price">{productVal.price}</div>
       <div className="sizes">
-        {sizes.map((el, i) => (
-          <ProductSize key={i} currSize={el} />
-        ))}
+        {productVal.sizes &&
+          productVal.sizes.map((el, i) => (
+            <ProductSize key={i} currSize={el.size_name} />
+          ))}
       </div>
       <input type="button" value="장바구니" />
       <ul className="subMenu">
