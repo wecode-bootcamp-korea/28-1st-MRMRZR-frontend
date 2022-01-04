@@ -1,69 +1,52 @@
 .signup {
-  width: 1600px;
   padding: 0 20px;
+  justify-content: center;
   .signupContainer {
-    width: 100%;
     .main-class-header {
+      padding: 40px 0 20px;
       h1 {
-        font-size: 48px;
+        font-size: 22px;
       }
     }
-
-    .signup-input {
+    .email-input {
       margin-top: 36px;
       line-height: 25px;
-      .signup-email {
-        .email-input {
-          .email-input-type {
-          }
-          .email-input-error {
-          }
-        }
+
+      .email-input-error {
       }
+    }
+    .signup-repassword {
+      display: flex;
       .password-input {
         display: flex;
-
-        .signup-pw {
-          margin-right: 10px;
-          .signup-pw-input {
-            .signup-pw-input-type {
-            }
-            .password-input-error {
-            }
-          }
+        margin-right: 10px;
+        .password-input-error {
         }
-        .signup-2password {
-          .signup-2pw-input {
-            .signup-2pw-input-type {
-            }
-            .password-onemore-input-error {
-            }
-          }
-        }
-        .signup-name {
-          .signup-name-input {
-            .signup-name-input-type {
-            }
-            .name-input-error {
-            }
-          }
+      }
+      .signup-repassword {
+        .repassword-input-error {
         }
       }
     }
-    .checkboxs {
-      margin-top: 36px;
-      line-height: 30px;
-
-      .checkbox-each {
-        input {
-          margin-right: 10px;
-        }
+    .signup-name {
+      .name-input-error {
       }
     }
+  }
+  .checkboxs {
+    font-size: 11px;
+    margin-top: 36px;
+    line-height: 30px;
 
-    .signup-button-area {
-      margin-top: 36px;
+    .checkbox-each {
+      input {
+        margin-right: 10px;
+      }
     }
+  }
+
+  .signup-button-area {
+    margin-top: 36px;
   }
 }
 
