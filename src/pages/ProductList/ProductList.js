@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 import Product from './components/Product';
 import DropDown from './components/DropDown';
@@ -11,6 +11,7 @@ function ProductList() {
   const [selectSort, setSelectSort] = useState('');
 
   const navigate = useNavigate();
+  const { search } = useLocation();
 
   const clickedSort = event => {
     const { className } = event.target;
@@ -28,16 +29,38 @@ function ProductList() {
     }
   };
 
-  const getDataBySort = () => {
+  const setQueryUrl = () => {
     const filterQuery = selectSizeList.map(size => `size=${size}`).join('&');
     let sortQuery = '';
 
-    if (selectSort !== '') sortQuery = `&order=price_${selectSort}`;
+    if (selectSort !== '') {
+      if (selectSizeList.length) {
+        sortQuery = `&order=price_${selectSort}`;
+      } else if (!selectSizeList.length) {
+        sortQuery = `order=price_${selectSort}`;
+      }
+    }
 
     const queryString = filterQuery.concat(sortQuery);
+    // 통신 후 백에서 받는 Product API 추가 ${API}
     navigate(`?${queryString}`);
+  };
 
-    fetch(`?${queryString}`, {
+  const resetFilter = () => {
+    setSelectSizeList([]);
+    setSelectSort('');
+
+    // 통신 후 백에서 받는 Product API로 수정.
+    fetch('/data/ProductListData/ProductListData.json')
+      .then(res => res.json())
+      .then(result => {
+        setProductList(result);
+      });
+  };
+
+  const getQueryData = () => {
+    // 통신 후 백에서 받는 Product API로 수정.
+    fetch(`${search}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -50,10 +73,15 @@ function ProductList() {
   };
 
   useEffect(() => {
-    getDataBySort();
+    setQueryUrl();
   }, [selectSizeList, selectSort]);
 
   useEffect(() => {
+    search && getQueryData();
+  }, [search]);
+
+  useEffect(() => {
+    // 통신 후 백에서 받는 Product API로 수정.
     fetch('/data/ProductListData/ProductListData.json')
       .then(res => res.json())
       .then(data => setProductList(data));
@@ -75,13 +103,10 @@ function ProductList() {
             name="사이즈"
             standard="size"
             checkedSize={checkedSize}
-            sort={getDataBySort}
+            sort={setQueryUrl}
           />
-          <button
-            className="resetFilterButton"
-            // onClick={getDataReset}
-          >
-            CLEAN ALL
+          <button className="resetFilterButton" onClick={resetFilter}>
+            CLEAR
           </button>
         </div>
         <div className="sort">
