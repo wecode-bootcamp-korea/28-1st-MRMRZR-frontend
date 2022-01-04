@@ -29,7 +29,6 @@ function ProductDetail() {
     fetch('http://10.58.5.4:8000/products/detail/1')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setProductVal(res.results);
       });
   }, []);
