@@ -30,13 +30,14 @@ function ProductList() {
   };
 
   const setQueryUrl = () => {
+    const addAndSymbol = selectSizeList.length;
     const filterQuery = selectSizeList.map(size => `size=${size}`).join('&');
     let sortQuery = '';
 
     if (selectSort !== '') {
-      if (selectSizeList.length) {
+      if (addAndSymbol) {
         sortQuery = `&order=price_${selectSort}`;
-      } else if (!selectSizeList.length) {
+      } else {
         sortQuery = `order=price_${selectSort}`;
       }
     }
@@ -104,6 +105,7 @@ function ProductList() {
             standard="size"
             checkedSize={checkedSize}
             sort={setQueryUrl}
+            search={search}
           />
           <button className="resetFilterButton" onClick={resetFilter}>
             CLEAR
