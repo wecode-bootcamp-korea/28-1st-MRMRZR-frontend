@@ -5,13 +5,23 @@ import Product from './components/Product';
 import DropDown from './components/DropDown';
 import './ProductList.scss';
 
+const API = 'http://2c0a-27-1-214-34.ngrok.io/product';
+
+const changeSizeToNumbers = {
+  xs: 1,
+  s: 2,
+  m: 3,
+  l: 4,
+  xl: 5,
+};
+
 function ProductList() {
   const [productList, setProductList] = useState([]);
   const [selectSizeList, setSelectSizeList] = useState([]);
   const [selectSort, setSelectSort] = useState('');
 
   const navigate = useNavigate();
-  const { search } = useLocation();
+  const { search, pathname } = useLocation();
 
   const clickedSort = event => {
     const { className } = event.target;
@@ -31,19 +41,20 @@ function ProductList() {
 
   const setQueryUrl = () => {
     const addAndSymbol = selectSizeList.length;
-    const filterQuery = selectSizeList.map(size => `size=${size}`).join('&');
+    const filterQuery = selectSizeList
+      .map(size => `size=${changeSizeToNumbers[size.toLowerCase()]}`)
+      .join('&');
     let sortQuery = '';
 
     if (selectSort !== '') {
       if (addAndSymbol) {
-        sortQuery = `&order=price_${selectSort}`;
+        sortQuery = `&sort=price_${selectSort}`;
       } else {
-        sortQuery = `order=price_${selectSort}`;
+        sortQuery = `sort=price_${selectSort}`;
       }
     }
 
     const queryString = filterQuery.concat(sortQuery);
-    // 통신 후 백에서 받는 Product API 추가 ${API}
     navigate(`?${queryString}`);
   };
 
@@ -51,17 +62,16 @@ function ProductList() {
     setSelectSizeList([]);
     setSelectSort('');
 
-    // 통신 후 백에서 받는 Product API로 수정.
-    fetch('/data/ProductListData/ProductListData.json')
+    navigate(`${pathname}`);
+    fetch(`${API}`)
       .then(res => res.json())
-      .then(result => {
-        setProductList(result);
+      .then(data => {
+        setProductList(data.results);
       });
   };
 
   const getQueryData = () => {
-    // 통신 후 백에서 받는 Product API로 수정.
-    fetch(`${search}`, {
+    fetch(`${API}${search}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -69,12 +79,12 @@ function ProductList() {
     })
       .then(res => res.json())
       .then(data => {
-        setProductList(data);
+        setProductList(data.results);
       });
   };
 
   useEffect(() => {
-    setQueryUrl();
+    (selectSizeList.length > 0 || selectSort !== '') && setQueryUrl();
   }, [selectSizeList, selectSort]);
 
   useEffect(() => {
@@ -82,10 +92,9 @@ function ProductList() {
   }, [search]);
 
   useEffect(() => {
-    // 통신 후 백에서 받는 Product API로 수정.
-    fetch('/data/ProductListData/ProductListData.json')
+    fetch(`${API}`)
       .then(res => res.json())
-      .then(data => setProductList(data));
+      .then(data => setProductList(data.results));
   }, []);
 
   return (
@@ -121,13 +130,13 @@ function ProductList() {
         </div>
       </div>
       <div className="productListWrapper">
-        {productList.map(product => {
+        {productList.map((product, idx) => {
           const { product_id, ...productInfo } = product;
           return (
             <Link
               className="productLink"
               to={`/product/detail/${product_id}`}
-              key={product_id}
+              key={product_id + idx}
             >
               <Product key={product_id} {...productInfo} />
             </Link>

@@ -3,12 +3,12 @@ import { FaRegHeart } from 'react-icons/fa';
 import './Product.scss';
 
 export default function Product(props) {
-  const { url, name, price } = props;
+  const { image, name, price } = props;
 
   return (
     <div className="product">
       <div className="imageHolder">
-        <img alt={name} src={url} />
+        <img alt={name} src={image[0]} />
       </div>
       <div className="description">
         <div className="name">{name}</div>
