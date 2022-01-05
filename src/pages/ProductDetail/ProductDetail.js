@@ -28,8 +28,8 @@ function ProductDetail() {
   // });
 
   useEffect(() => {
-    fetch(`http://10.58.7.205:8000/products/detail/1`)
-      // fetch(`http://10.58.5.4:8000/products/detail/${params.id}`)
+    // fetch(`http://10.58.7.205:8000/products/detail/1`)
+    fetch(`http://10.58.5.4:8000/products/detail/${params.id}`)
       .then(res => res.json())
       .then(res => {
         setProductVal(res.results);
