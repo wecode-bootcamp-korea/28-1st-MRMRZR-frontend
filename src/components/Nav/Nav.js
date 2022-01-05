@@ -9,6 +9,8 @@ export default function Nav() {
   const [searchActivated, setSearchActivated] = useState(false);
   const [cartValue, setCartValue] = useState([]);
   const [classOfCartWrap, setClassOfCartWrap] = useState('');
+  // todo : 장바구니 수량 state로 관리하고, +-버튼 눌렀을 때 setState
+  // todo : 적용버튼 클릭 시 fetch로 변경 요청
 
   useEffect(() => {
     fetch(`http://b474-211-106-114-186.ngrok.io/carts/list/2`)
