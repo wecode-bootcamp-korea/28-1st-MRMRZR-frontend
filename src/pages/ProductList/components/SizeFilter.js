@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import './SizeFilter.scss';
@@ -10,21 +10,18 @@ export default function SizeFilter({
   standard,
   checkedSize,
   selectSizeList,
+  toggleSizeFilter,
+  isDropDownActive,
 }) {
-  const [isDropDownActive, setIsDropDownActive] = useState(false);
-  const showDropDown = isDropDownActive ? 'show' : 'hide';
   return (
     <div className="sizeFilter">
       <div className="dropDownButtons">
         <span>{name}</span>
-        <button
-          type="button"
-          onClick={() => setIsDropDownActive(!isDropDownActive)}
-        >
+        <button type="button" onClick={toggleSizeFilter}>
           <IoIosArrowDown />
         </button>
       </div>
-      <div className={`list ${showDropDown}`}>
+      <div className={`list ${isDropDownActive ? 'show' : 'hide'}`}>
         {SIZE_LIST.map((item, idx) => (
           <label key={item + idx} onChange={checkedSize}>
             <input

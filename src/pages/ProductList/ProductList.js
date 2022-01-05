@@ -20,10 +20,15 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [selectSizeList, setSelectSizeList] = useState([]);
   const [selectSort, setSelectSort] = useState('');
+  const [isDropDownActive, setIsDropDownActive] = useState(false);
   const [offset, setOffset] = useState(8);
 
   const navigate = useNavigate();
   const { search, pathname } = useLocation();
+
+  const toggleSizeFilter = () => {
+    setIsDropDownActive(!isDropDownActive);
+  };
 
   const clickedSort = event => {
     const { className } = event.target;
@@ -60,18 +65,6 @@ function ProductList() {
     navigate(`?${queryString}`);
   };
 
-  const resetFilter = () => {
-    setSelectSizeList([]);
-    setSelectSort('');
-
-    navigate(`${pathname}`);
-    fetch(`${API}`)
-      .then(res => res.json())
-      .then(data => {
-        setProductList(data.results);
-      });
-  };
-
   const getQueryData = () => {
     fetch(`${API}${search}`, {
       headers: {
@@ -79,6 +72,19 @@ function ProductList() {
         Accept: 'application/json',
       },
     })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(data.results);
+      });
+  };
+
+  const resetFilter = () => {
+    setSelectSizeList([]);
+    setSelectSort('');
+    setIsDropDownActive(false);
+
+    navigate(`${pathname}`);
+    fetch(`${API}`)
       .then(res => res.json())
       .then(data => {
         setProductList(data.results);
@@ -100,7 +106,6 @@ function ProductList() {
   }, []);
 
   const fetchProductList = () => {
-    console.log('dd');
     fetch(`${API}?offset=${offset}&limit=8`)
       .then(res => res.json())
       .then(data => {
@@ -148,6 +153,9 @@ function ProductList() {
             sort={setQueryUrl}
             search={search}
             selectSizeList={selectSizeList}
+            selectSort={selectSort}
+            isDropDownActive={isDropDownActive}
+            toggleSizeFilter={toggleSizeFilter}
           />
           <button className="resetFilterButton" onClick={resetFilter}>
             CLEAR
