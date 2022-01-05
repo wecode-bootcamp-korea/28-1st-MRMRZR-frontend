@@ -2,7 +2,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  margin: 72px 20px 0px 20px;
+  margin: 100px 20px 0px 20px;
   .user-container-view {
     display: flex;
     .login-view-content {
@@ -15,6 +15,7 @@
         }
       }
       .login-content-id {
+        margin: 30px 0 20px;
         input {
           margin: 0 0 15px;
           border-left-width: 0;
@@ -22,14 +23,14 @@
           border-top-width: 0;
           border-bottom: 1.5px solid #d3d3d3;
           width: 100%;
-          :focus {
+          .focus {
             outline: none;
           }
         }
       }
       .login-content-password {
         text-align: left;
-        margin: 0 0 15px;
+        margin: 20px 0 20px;
         input {
           border-left-width: 0;
           border-right-width: 0;
@@ -51,13 +52,13 @@
           width: auto;
           background-color: black;
           color: white;
-          margin-top: 14px;
+          margin-top: 34px;
         }
       }
     }
   }
   .login-signup {
-    margin-left: 25px;
+    margin-left: 85px;
     .signup-view {
       margin: 10px 0 0;
       h2 {
@@ -88,7 +89,7 @@
         width: auto;
         background-color: black;
         color: white;
-        margin-top: 60px;
+        margin-top: 120px;
       }
     }
   }

@@ -101,7 +101,6 @@ function Login() {
             </button>
           </div>
         </section>
-        <section className="gap" />
       </article>
     </main>
   );

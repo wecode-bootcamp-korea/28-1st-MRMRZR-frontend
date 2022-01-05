@@ -65,86 +65,82 @@ export default function SignUp() {
             // value={userEmail}
           />
         </div>
-        <div className="email-input-error">
-          {/* <span>필수 입력란입니다.</span> */}
-          <div className="signup-repassword">
-            <div className="password-input">
-              <input
-                type="text"
-                id="id"
-                class="int"
-                maxlength="20"
-                placeholder="비밀번호"
-                // onChange={handlePW}
-                // value={userPW}
-              />
-            </div>
-            <div className="password-input-error">
-              {/* <span>필수 입력란입니다.</span> */}
-
-              <div className="repassword-input">
-                <input
-                  type="text"
-                  id="id"
-                  class="int"
-                  maxlength="20"
-                  placeholder="비밀번호 확인"
-                  // onChange={handle2PW}
-                  // value={user2PW}
-                />
-              </div>
-              <div className="repassword-input-error">
-                {/* <span>필수 입력란입니다.</span> */}
-              </div>
-            </div>
-          </div>
-          <div className="signup-name">
+        <div className="signup-repassword">
+          <div className="password-input">
             <input
               type="text"
               id="id"
               class="int"
               maxlength="20"
-              placeholder="이름"
-              // onChange={handlename}
-              // value={username}
+              placeholder="비밀번호"
+              // onChange={handlePW}
+              // value={userPW}
             />
           </div>
-          <div className="name-input-error">
-            <span />
-            {/* <span>필수 입력란입니다.</span> */}
+
+          <div className="repassword-input">
+            <input
+              type="text"
+              id="id"
+              class="int"
+              maxlength="20"
+              placeholder="비밀번호를 한 번 더 입력해 주십시오"
+              // onChange={handle2PW}
+              // value={user2PW}
+            />
           </div>
         </div>
-        <div className="checkboxs">
-          <div className="checkbox-each">
-            <input type="checkbox" />
-            <span>모든 항목에 동의</span>
-          </div>
-          <div className="checkbox-each">
-            <input type="checkbox" />
-            <span>*만 14세 이상입니다. </span>
-          </div>
-          <div className="checkbox-each">
-            <input type="checkbox" />
-            <span>* 필수적 개인정보의 수집 및 이용에 대한 동의</span>
-          </div>
-          <div className="checkbox-each">
-            <input type="checkbox" />
-            <span>선택적 개인정보의 수집 및 이용에 대한 동의</span>
-          </div>
-          <div className="checkbox-each">
-            <input type="checkbox" />
-            <span>광고성 정보 수신에 대한 동의</span>
-          </div>
+
+        <div className="signup-name">
+          <input
+            type="text"
+            id="id"
+            class="int"
+            maxlength="20"
+            placeholder="이름"
+            // onChange={handlename}
+            // value={username}
+          />
         </div>
-        <div className="signup-button-area">
-          <button
-            className="signup-button"
-            type="button"
-            // onClick={joinUser}
-          >
-            <span>계정만들기</span>
-          </button>
+
+        <span />
+        {/* <span>필수 입력란입니다.</span> */}
+      </div>
+      <div className="checkboxs">
+        <div className="checkbox-each">
+          <input type="checkbox" />
+          <span>모든 항목에 동의</span>
         </div>
+        <div className="checkbox-each">
+          <input type="checkbox" />
+          <span>*만 14세 이상입니다. </span>
+        </div>
+        <div className="checkbox-each">
+          <input type="checkbox" />
+          <span>
+            {' '}
+            <u>* 필수적 개인정보의 수집 및 이용</u>에 대한 동의
+          </span>
+        </div>
+        <div className="checkbox-each">
+          <input type="checkbox" />
+          <span>
+            <u>선택적 개인정보의 수집 및 이용</u>에 대한 동의
+          </span>
+        </div>
+        <div className="checkbox-each">
+          <input type="checkbox" />
+          <span>광고성 정보 수신에 대한 동의</span>
+        </div>
+      </div>
+      <div className="signup-button-area">
+        <button
+          className="signup-button"
+          type="button"
+          // onClick={joinUser}
+        >
+          <span>계정만들기</span>
+        </button>
       </div>
     </section>
   );

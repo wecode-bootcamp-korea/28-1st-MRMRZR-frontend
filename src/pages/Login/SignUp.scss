@@ -1,5 +1,6 @@
 .signup {
   padding: 0 20px;
+  margin: 80px 20px 20px 80px;
   justify-content: center;
   .signupContainer {
     .main-class-header {
@@ -9,38 +10,75 @@
       }
     }
     .email-input {
+      display: flex;
+
       margin-top: 36px;
       line-height: 25px;
-
-      .email-input-error {
+      input {
+        margin: 0 0 15px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+        border-bottom: 1.5px solid #d3d3d3;
+        width: 49%;
       }
+      margin-top: 36px;
+      line-height: 25px;
     }
     .signup-repassword {
       display: flex;
       .password-input {
         display: flex;
+        flex-basis: 50%;
         margin-right: 10px;
-        .password-input-error {
+        input {
+          margin: 17px 0 15px;
+          border-left-width: 0;
+          border-right-width: 0;
+          border-top-width: 0;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 100%;
         }
       }
-      .signup-repassword {
-        .repassword-input-error {
+
+      .repassword-input {
+        flex-basis: 50%;
+        input {
+          margin: 17px 0 15px 15px;
+          border-left-width: 0;
+          border-right-width: 0;
+          border-top-width: 0;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 100%;
         }
       }
     }
     .signup-name {
-      .name-input-error {
+      input {
+        margin: 17px 0 15px;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 0;
+        border-bottom: 1.5px solid #d3d3d3;
+        width: 49.5%;
       }
     }
   }
   .checkboxs {
     font-size: 11px;
     margin-top: 36px;
-    line-height: 30px;
+    line-height: 2;
 
     .checkbox-each {
+      line-height: 2;
       input {
         margin-right: 10px;
+        margin-top: 15px;
+      }
+      span {
+        u {
+          text-decoration: underline;
+        }
       }
     }
   }
