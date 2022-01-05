@@ -20,14 +20,18 @@ export default function ProductDescription({ productVal }) {
       <h2>{productVal.name}</h2>
       <p className="itemCode">{productVal.product_number}</p>
       <p className="desctiption">{productVal.description}</p>
-      <div className="price">{productVal.price}</div>
+      <div className="price">{productVal.price} KRW</div>
       <div className="sizes" onClick={activateBtn}>
         {/* {testSizes.map((el, i) => (
           <ProductSize key={i} currSize={el} />
         ))} */}
         {productVal.sizes &&
           productVal.sizes.map((el, i) => (
-            <ProductSize key={i} currSize={el.size_name} />
+            <ProductSize
+              key={i}
+              currSize={el.size_name}
+              currStock={el.size_stock}
+            />
           ))}
       </div>
       <input type="button" value="장바구니" onClick={addToCart} />
