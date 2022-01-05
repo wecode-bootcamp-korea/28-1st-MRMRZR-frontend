@@ -1,0 +1,16 @@
+ul.dropdown {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  top: 72px;
+  padding-left: calc(50vw - 200px);
+  font-size: 13px;
+  transform-origin: top;
+  transform: scale(1, 0);
+  transition: transform 0.5s ease-out;
+  background: #fff;
+
+  li {
+    padding: 1em 0;
+  }
+}
