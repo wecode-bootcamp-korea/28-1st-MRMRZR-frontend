@@ -36,8 +36,6 @@ function ProductDetail() {
       });
   }, []);
 
-  console.log(productVal);
-
   return (
     <div className="productDetail">
       <div className="productDetailWrap">
