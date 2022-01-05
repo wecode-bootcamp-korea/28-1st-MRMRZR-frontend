@@ -1,38 +1,40 @@
-import React from 'react'; // ,{ useState, useEffect }
+import React, { useState, useEffect } from 'react';
 // import React from 'react-dom';
 import './Login.scss';
 
 function Login() {
-  // const [userEmail, setUserEmail] = useState();
-  // const [userPW, setUserPW] = useState();
-  // const [isSuccess, setIsSuccess] = useState();
+  const [userEmail, setUserEmail] = useState();
+  const [userPW, setUserPW] = useState();
+  const [isSuccess, setIsSuccess] = useState();
 
-  // const handleEmail = event => {
-  //   setUserEmail(event.target.value);
-  // };
+  const handleEmail = event => {
+    setUserEmail(event.target.value);
+  };
 
-  // const handlePW = event => {
-  //   setUserPW(event.target.value);
-  // };
-  // const loginUser = event => {
-  //   event.preventDefault();
+  const handlePW = event => {
+    setUserPW(event.target.value);
+  };
+  const loginUser = event => {
+    event.preventDefault();
 
-  //   const userData = {
-  //     email: userEmail,
-  //     password: userPW,
-  //   };
-  //   fetch('http://cd66-59-187-202-238.ngrok.io/users/login ', {
-  //     method: 'POST',
-  //     body: JSON.stringify(userData),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setIsSuccess(data));
-  // };
-
-  // useEffect(() => {
-  //   if (typeof setIsSuccess !== 'undefined') console.log(isSuccess);
-  // }, [isSuccess]);
-
+    const userData = {
+      email: userEmail,
+      password: userPW,
+    };
+    fetch('http://cd66-59-187-202-238.ngrok.io/users/login ', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.Authorization) {
+          localStorage.setItem('token', result.Authorization);
+          this.props.history.push('main');
+        } else if (result.message === 'UNAUTHORIZED') {
+          alert('아이디나 비밀번호를 확인해주세요.');
+        }
+      });
+  };
   return (
     <main className="user-container">
       <article className="user-container-view">
@@ -47,8 +49,8 @@ function Login() {
               id="id"
               type="text"
               placeholder="이메일"
-              // onChange={handleEmail}
-              // value={userEmail}
+              onChange={handleEmail}
+              value={userEmail}
             />
           </div>
           <div className="login-content-password">
@@ -56,8 +58,8 @@ function Login() {
               id="pw"
               type="text"
               placeholder="비밀번호"
-              // onChange={handlePW}
-              // value={userPW}
+              onChange={handlePW}
+              value={userPW}
             />
           </div>
           <a
@@ -67,10 +69,7 @@ function Login() {
             비밀번호를 잊으셨습니까?
           </a>
           <div className="login-button-area">
-            <button
-              type="button"
-              // onClick={loginUser}
-            >
+            <button type="button" onClick={loginUser}>
               <span>로그인</span>
             </button>
           </div>
@@ -92,7 +91,7 @@ function Login() {
             <span>
               아직
               <strong> Zara.com</strong> 의 회원이 아니시라면 이메일로 간편하게
-              가입하실 수 있습니다. "
+              가입하실 수 있습니다.
             </span>
           </div>
           <div className="signup-button-area">

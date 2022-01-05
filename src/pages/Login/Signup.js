@@ -1,52 +1,52 @@
-import React from 'react'; //  { useState, useEffect }
+import React, { useState, useEffect } from 'react';
 
 // import { BsExclamationCircle } from '';
 import '../Login/SignUp.scss';
 
 export default function SignUp() {
-  // const [userEmail, setUserEmail] = useState('');
-  // const [userPW, setUserPW] = useState('');
-  // const [user2PW, setUser2Pw] = useState('');
-  // const [username, setUsername] = useState('');
-  // const [isSuccess, setIsSuccess] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPW, setUserPW] = useState('');
+  const [user2PW, setUser2Pw] = useState('');
+  const [username, setUsername] = useState('');
+  const [isSuccess, setIsSuccess] = useState('');
 
-  // const handleEmail = event => {
-  //   setUserEmail(event.target.value);
-  // };
+  const handleEmail = event => {
+    setUserEmail(event.target.value);
+  };
 
-  // const handlePW = event => {
-  //   setUserPW(event.target.value);
-  // };
+  const handlePW = event => {
+    setUserPW(event.target.value);
+  };
 
-  // const handle2PW = event => {
-  //   setUser2Pw(event.target.value);
-  // };
+  const handle2PW = event => {
+    setUser2Pw(event.target.value);
+  };
 
-  // const handlename = event => {
-  //   setUsername(event.target.value);
-  // };
+  const handlename = event => {
+    setUsername(event.target.value);
+  };
 
-  // const joinUser = event => {
-  //   event.preventDefault();
-  //   if (userPW === user2PW) {
-  //     const userData = {
-  //       email: userEmail,
-  //       password: userPW,
-  //       name: username,
-  //     };
+  const joinUser = event => {
+    event.preventDefault();
+    if (userPW === user2PW) {
+      const userData = {
+        email: userEmail,
+        password: userPW,
+        name: username,
+      };
 
-  //     fetch('http://cd66-59-187-202-238.ngrok.io/users/signup', {
-  //       method: 'POST',
-  //       body: JSON.stringify(userData),
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => setIsSuccess(data));
-  //   }
-  // };
+      fetch('http://cd66-59-187-202-238.ngrok.io/users/signup', {
+        method: 'POST',
+        body: JSON.stringify(userData),
+      })
+        .then(res => res.json())
+        .then(data => setIsSuccess(data));
+    }
+  };
 
-  // useEffect(() => {
-  //   if (typeof setIsSuccess !== 'undefined') console.log(isSuccess);
-  // }, [isSuccess]);
+  useEffect(() => {
+    if (typeof setIsSuccess !== 'undefined') console.log(isSuccess);
+  }, [isSuccess]);
 
   return (
     <section className="signup">
@@ -61,8 +61,8 @@ export default function SignUp() {
             class="int"
             maxlength="20"
             placeholder="이메일"
-            // onChange={handleEmail}
-            // value={userEmail}
+            onChange={handleEmail}
+            value={userEmail}
           />
         </div>
         <div className="signup-repassword">
@@ -73,8 +73,8 @@ export default function SignUp() {
               class="int"
               maxlength="20"
               placeholder="비밀번호"
-              // onChange={handlePW}
-              // value={userPW}
+              onChange={handlePW}
+              value={userPW}
             />
           </div>
 
@@ -85,8 +85,8 @@ export default function SignUp() {
               class="int"
               maxlength="20"
               placeholder="비밀번호를 한 번 더 입력해 주십시오"
-              // onChange={handle2PW}
-              // value={user2PW}
+              onChange={handle2PW}
+              value={user2PW}
             />
           </div>
         </div>
@@ -98,8 +98,8 @@ export default function SignUp() {
             class="int"
             maxlength="20"
             placeholder="이름"
-            // onChange={handlename}
-            // value={username}
+            onChange={handlename}
+            value={username}
           />
         </div>
 
@@ -134,11 +134,7 @@ export default function SignUp() {
         </div>
       </div>
       <div className="signup-button-area">
-        <button
-          className="signup-button"
-          type="button"
-          // onClick={joinUser}
-        >
+        <button className="signup-button" type="button" onClick={joinUser}>
           <span>계정만들기</span>
         </button>
       </div>
