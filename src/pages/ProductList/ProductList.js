@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 import Product from './components/Product';
-import DropDown from './components/DropDown';
+import SizeFilter from './components/SizeFilter';
 import './ProductList.scss';
 
-const API = 'http://2c0a-27-1-214-34.ngrok.io/product';
+const API = '/data/ProductListData/ProductListData.json';
+// BACK통신 API 주소 : 'http://10.58.7.224:8000/products';
 
 const changeSizeToNumbers = {
   xs: 1,
@@ -19,6 +20,7 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [selectSizeList, setSelectSizeList] = useState([]);
   const [selectSort, setSelectSort] = useState('');
+  const [offset, setOffset] = useState(8);
 
   const navigate = useNavigate();
   const { search, pathname } = useLocation();
@@ -97,6 +99,36 @@ function ProductList() {
       .then(data => setProductList(data.results));
   }, []);
 
+  const fetchProductList = () => {
+    console.log('dd');
+    fetch(`${API}?offset=${offset}&limit=8`)
+      .then(res => res.json())
+      .then(data => {
+        setProductList([...productList, ...data.results]);
+      });
+  };
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight > scrollHeight) {
+      setOffset(offset + 8);
+    }
+  };
+
+  useEffect(() => {
+    offset && fetchProductList();
+  }, [offset]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
   return (
     <div className="productListContent">
       <div className="header">Women</div>
@@ -109,12 +141,13 @@ function ProductList() {
       <div className="contour" />
       <div className="dropDownWrapper">
         <div className="filter">
-          <DropDown
+          <SizeFilter
             name="사이즈"
             standard="size"
             checkedSize={checkedSize}
             sort={setQueryUrl}
             search={search}
+            selectSizeList={selectSizeList}
           />
           <button className="resetFilterButton" onClick={resetFilter}>
             CLEAR
@@ -130,13 +163,13 @@ function ProductList() {
         </div>
       </div>
       <div className="productListWrapper">
-        {productList.map((product, idx) => {
+        {productList.map(product => {
           const { product_id, ...productInfo } = product;
           return (
             <Link
               className="productLink"
               to={`/product/detail/${product_id}`}
-              key={product_id + idx}
+              key={product_id}
             >
               <Product key={product_id} {...productInfo} />
             </Link>
