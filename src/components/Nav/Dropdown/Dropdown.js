@@ -7,10 +7,10 @@ export default function Dropdown() {
     '아우터',
     '상의',
     '하의',
-    '퍼퓸',
     '슈즈',
     '악세서리',
     '백',
+    '퍼퓸',
   ];
 
   return (
