@@ -8,6 +8,7 @@ import './Nav.scss';
 export default function Nav() {
   const [searchActivated, setSearchActivated] = useState(false);
   const [cartValue, setCartValue] = useState([]);
+  const [classOfCartWrap, setClassOfCartWrap] = useState('');
 
   useEffect(() => {
     fetch(`http://b474-211-106-114-186.ngrok.io/carts/list/2`)
@@ -16,6 +17,11 @@ export default function Nav() {
         setCartValue(res);
       });
   }, []);
+
+  const activateCart = () => {
+    if (classOfCartWrap === '') setClassOfCartWrap('activated');
+    if (classOfCartWrap === 'activated') setClassOfCartWrap('');
+  };
 
   return (
     <nav className="Nav">
@@ -50,12 +56,12 @@ export default function Nav() {
           <li>보기</li>
           <li>로그인</li>
           <li>도움말</li>
-          <li>
+          <li onClick={activateCart}>
             장바구니
-            <div className="cartWarp">
+            <div className={`cartWarp${classOfCartWrap}`}>
               <span className="basket">장바구니</span>
-              {cartValue.resutl &&
-                cartValue.resutl.map((el, i) => (
+              {cartValue.result &&
+                cartValue.result.map((el, i) => (
                   <Cart
                     key={i}
                     cart_id={el.cart_id}

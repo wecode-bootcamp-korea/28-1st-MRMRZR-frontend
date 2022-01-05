@@ -31,7 +31,12 @@
       color: #1b1b1b;
 
       > li > div.cartWarp {
+        display: none;
         background: #eee;
+
+        &.activated {
+          display: block;
+        }
       }
     }
 
