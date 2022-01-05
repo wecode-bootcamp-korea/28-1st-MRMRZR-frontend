@@ -3,11 +3,11 @@ import './ProductGallery.scss';
 
 export default function ProductGallery({ productVal }) {
   const [windowIdx, setWindowIdx] = useState(0);
-  const testImgs = [
-    './images/ProductDetail/testimg1.jpg',
-    './images/ProductDetail/testimg2.jpg',
-    './images/ProductDetail/testimg3.jpg',
-  ];
+  // const testImgs = [
+  //   './images/ProductDetail/testimg1.jpg',
+  //   './images/ProductDetail/testimg2.jpg',
+  //   './images/ProductDetail/testimg3.jpg',
+  // ];
 
   const moveGalleryByWindow = e => {
     setWindowIdx(Number(e.target.id) - 1);
@@ -26,13 +26,14 @@ export default function ProductGallery({ productVal }) {
           style={{ transform: `translateY(-${windowIdx * 600}px)` }}
           onWheel={moveGalleryByScroll}
         >
-          {testImgs.map((el, i) => {
-            return (
-              <li key={i}>
-                <img src={el} alt="" />
-              </li>
-            );
-          })}
+          {productVal.image_urls &&
+            productVal.image_urls.map((el, i) => {
+              return (
+                <li key={i}>
+                  <img src={el.image_url} alt="" />
+                </li>
+              );
+            })}
         </ul>
       </div>
       <div className="galleryBars">
@@ -44,13 +45,14 @@ export default function ProductGallery({ productVal }) {
       </div>
       <div className="galleryWindow">
         <ul>
-          {testImgs.map((el, i) => {
-            return (
-              <li key={i} onClick={moveGalleryByWindow}>
-                <img id={String(i + 1)} src={el} alt="" />
-              </li>
-            );
-          })}
+          {productVal.image_urls &&
+            productVal.image_urls.map((el, i) => {
+              return (
+                <li key={i} onClick={moveGalleryByWindow}>
+                  <img id={String(i + 1)} src={el.image_url} alt="" />
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

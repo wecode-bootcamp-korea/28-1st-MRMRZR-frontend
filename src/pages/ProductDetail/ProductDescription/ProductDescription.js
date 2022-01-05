@@ -3,7 +3,7 @@ import ProductSize from './ProductSize/ProductSize';
 import './ProductDescription.scss';
 
 export default function ProductDescription({ productVal }) {
-  const testSizes = ['XS', 'S', 'M', 'L', 'XL'];
+  // const testSizes = ['XS', 'S', 'M', 'L', 'XL'];
   const [sizeSelected, setSizeSelected] = useState(false);
 
   const activateBtn = () => {
@@ -22,13 +22,13 @@ export default function ProductDescription({ productVal }) {
       <p className="desctiption">{productVal.description}</p>
       <div className="price">{productVal.price}</div>
       <div className="sizes" onClick={activateBtn}>
-        {testSizes.map((el, i) => (
+        {/* {testSizes.map((el, i) => (
           <ProductSize key={i} currSize={el} />
-        ))}
-        {/* {productVal.sizes &&
+        ))} */}
+        {productVal.sizes &&
           productVal.sizes.map((el, i) => (
             <ProductSize key={i} currSize={el.size_name} />
-          ))} */}
+          ))}
       </div>
       <input type="button" value="장바구니" onClick={addToCart} />
       <ul className="subMenu">
