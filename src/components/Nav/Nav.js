@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Dropdown from './Dropdown/Dropdown';
+import Cart from './Cart/Cart';
 import './Nav.scss';
 
 export default function Nav() {
   const [searchActivated, setSearchActivated] = useState(false);
+  const [cartValue, setCartValue] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://b474-211-106-114-186.ngrok.io/carts/list/2`)
+      .then(res => res.json())
+      .then(res => {
+        setCartValue(res);
+      });
+  }, []);
 
   return (
     <nav className="Nav">
@@ -40,7 +50,27 @@ export default function Nav() {
           <li>보기</li>
           <li>로그인</li>
           <li>도움말</li>
-          <li>바스켓백(0)</li>
+          <li>
+            장바구니
+            <div className="cartWarp">
+              <span className="basket">장바구니</span>
+              {cartValue.resutl &&
+                cartValue.resutl.map((el, i) => (
+                  <Cart
+                    key={i}
+                    cart_id={el.cart_id}
+                    product_id={el.product_id}
+                    product_name={el.product_name}
+                    product_number={el.product_number}
+                    price={el.price}
+                    size={el.size}
+                    image_url={el.image_url}
+                    quantity={el.quantity}
+                  />
+                ))}
+              <input type="button" value="장바구니로 가기" />
+            </div>
+          </li>
         </ul>
         <span className={`searchBox ${searchActivated && 'activated'}`}>
           <AiOutlineSearch />
