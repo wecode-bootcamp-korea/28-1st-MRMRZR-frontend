@@ -1,0 +1,107 @@
+.userContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 100px 20px 0px 20px;
+
+  .userContainerView {
+    display: flex;
+
+    .userLogin {
+      text-align: left;
+
+      .userLoginTitle {
+        margin: 10px 0 0;
+        h2 {
+          font-size: 22px;
+          margin: 0 0 16px;
+        }
+      }
+
+      .userLoginId {
+        margin: 30px 0 20px;
+        input {
+          margin: 0 0 15px;
+          border: none;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .userLoginPassword {
+        text-align: left;
+        margin: 20px 0 20px;
+        input {
+          border: none;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      a {
+        font-size: 11px;
+      }
+
+      .loginBtn {
+        button {
+          min-width: 192px;
+          height: 40px;
+          width: auto;
+          background-color: black;
+          color: white;
+          margin-top: 34px;
+          font-size: 11px;
+        }
+        button.deactivate {
+          background-color: #dcdcdc;
+        }
+      }
+    }
+
+    .userSignUp {
+      margin-left: 85px;
+
+      .userSignUptitle {
+        margin: 10px 0 0;
+        h2 {
+          font-size: 22px;
+          margin: 0 0 16px;
+        }
+      }
+      p {
+        font-size: 13px;
+        margin: 0 0 12px;
+        strong {
+          font-weight: 800;
+        }
+      }
+
+      .userSignUpNextText {
+        span {
+          font-size: 13px;
+          margin: 10px 0px 30px;
+          strong {
+            font-weight: 800;
+          }
+        }
+      }
+
+      .userSignUpBtn {
+        button {
+          min-width: 192px;
+          height: 40px;
+          width: auto;
+          background-color: black;
+          color: white;
+          margin-top: 120px;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

@@ -196,6 +196,7 @@ function ProductList() {
           <div className="loadingSpinner">
             <div className="loading">
               <div></div>
+
             </div>
           </div>
         )}

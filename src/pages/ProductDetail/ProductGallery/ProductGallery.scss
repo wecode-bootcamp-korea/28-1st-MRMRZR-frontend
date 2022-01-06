@@ -1,0 +1,71 @@
+.productGallery {
+  display: flex;
+  width: 60%;
+
+  .galleryContainer {
+    width: 80%;
+    height: 600px;
+    overflow: hidden;
+
+    ul {
+      transition: all 0.5s ease;
+
+      li {
+        height: 600px;
+        border: 1px solid white;
+        background: #ccc;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .galleryBars {
+    position: relative;
+    width: 5%;
+
+    .progressBar {
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      border-radius: 5px;
+      transition: all 0.5s ease;
+      background: #000;
+    }
+
+    .progressGauge {
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      border-radius: 5px;
+      background: #e2e2e2;
+    }
+  }
+
+  .galleryWindow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+
+    ul {
+      width: 90%;
+
+      li {
+        margin-bottom: 5px;
+        height: 80px;
+        background: #ccc;
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
