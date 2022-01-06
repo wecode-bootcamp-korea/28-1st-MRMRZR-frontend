@@ -1,9 +1,13 @@
 import React from 'react';
 import './ProductSize.scss';
 
-export default function ProductSize({ currSize, currStock }) {
+export default function ProductSize({ currSize, currStock, onButtonClick }) {
+  const clicked = e => {
+    onButtonClick(e.target.id);
+  };
+
   return (
-    <div className="productSize">
+    <div className="productSize" onClick={clicked}>
       <input
         type="radio"
         name="size"

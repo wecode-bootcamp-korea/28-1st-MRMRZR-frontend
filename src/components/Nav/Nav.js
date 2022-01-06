@@ -13,7 +13,7 @@ export default function Nav() {
   // todo : 적용버튼 클릭 시 fetch로 변경 요청
 
   useEffect(() => {
-    fetch(`http://b474-211-106-114-186.ngrok.io/carts/list/2`)
+    fetch('http://7c51-211-106-114-186.ngrok.io/carts/2')
       .then(res => res.json())
       .then(res => {
         setCartValue(res);
@@ -58,8 +58,8 @@ export default function Nav() {
           <li>보기</li>
           <li>로그인</li>
           <li>도움말</li>
-          <li onClick={activateCart}>
-            장바구니
+          <li>
+            <span onClick={activateCart}>장바구니</span>
             <div className={`cartWarp${classOfCartWrap}`}>
               <span className="basket">장바구니</span>
               {cartValue.result &&
@@ -74,6 +74,7 @@ export default function Nav() {
                     size={el.size}
                     image_url={el.image_url}
                     quantity={el.quantity}
+                    size_id={el.size_id}
                   />
                 ))}
               <input type="button" value="장바구니로 가기" />
