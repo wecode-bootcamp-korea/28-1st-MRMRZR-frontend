@@ -28,7 +28,7 @@
 
     ul.myMenu {
       font-size: 13px;
-      color: #1b1b1b;
+      color: hsl(0, 0%, 11%);
 
       > li > div.cartWarp {
         display: none;
@@ -57,11 +57,19 @@
         top: 0;
         width: 300px;
         height: 100vh;
+        background: #eee;
 
         > span {
           display: inline-block;
           margin: 15px 0;
+          margin-left: 10px;
           font-size: 18px;
+        }
+
+        .close {
+          position: absolute;
+          right: 15px;
+          top: 15px;
         }
 
         > input {

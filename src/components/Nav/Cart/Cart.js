@@ -11,8 +11,10 @@ export default function Cart({
   image_url,
   quantity,
   size_id,
+  closeCart,
 }) {
   const [currQuantity, setCurrQuantity] = useState(quantity);
+
   const addQuantity = e => {
     e.preventDefault();
     setCurrQuantity(prev => prev + 1);
@@ -32,14 +34,22 @@ export default function Cart({
         size_id: size_id,
         quantity: currQuantity,
       }),
-    });
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.message === 'SUCCESS') alert('변경되었습니다.');
+      });
   };
 
   const deleteInCart = e => {
-    e.preventDefault();
-    fetch('http://7c51-211-106-114-186.ngrok.io/carts/1', {
+    closeCart();
+    fetch(`http://7c51-211-106-114-186.ngrok.io/carts/${cart_id}`, {
       method: 'DELETE',
-    });
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.result === 'NO_CONTENT') alert('삭제되었습니다.');
+      });
   };
 
   return (

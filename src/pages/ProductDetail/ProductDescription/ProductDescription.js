@@ -23,8 +23,16 @@ export default function ProductDescription({ productVal }) {
           size_id: selectedSize,
           quantity: 1,
         }),
-      });
-      alert('추가되었습니다.');
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.message === 'SUCCESS') {
+            alert('추가되었습니다.');
+            // Todo : 장바구니 업뎃
+          } else {
+            alert('다시 시도해주세요.');
+          }
+        });
     }
   };
 

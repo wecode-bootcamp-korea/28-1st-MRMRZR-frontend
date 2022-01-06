@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import Dropdown from './Dropdown/Dropdown';
 import Cart from './Cart/Cart';
 import './Nav.scss';
@@ -13,18 +13,22 @@ export default function Nav() {
   // todo : 적용버튼 클릭 시 fetch로 변경 요청
 
   useEffect(() => {
-    fetch('http://7c51-211-106-114-186.ngrok.io/carts')
-      .then(res => res.json())
-      .then(res => {
-        setCartValue(res);
-      });
-  }, []);
-
-  console.log(cartValue);
+    if (classOfCartWrap === 'activated') {
+      fetch('http://7c51-211-106-114-186.ngrok.io/carts')
+        .then(res => res.json())
+        .then(res => {
+          setCartValue(res);
+        });
+    }
+  }, [classOfCartWrap]);
 
   const activateCart = () => {
     if (classOfCartWrap === '') setClassOfCartWrap('activated');
     if (classOfCartWrap === 'activated') setClassOfCartWrap('');
+  };
+
+  const closeCart = () => {
+    setClassOfCartWrap('');
   };
 
   return (
@@ -64,6 +68,7 @@ export default function Nav() {
             <span onClick={activateCart}>장바구니</span>
             <div className={`cartWarp${classOfCartWrap}`}>
               <span className="basket">장바구니</span>
+              <AiOutlineClose className="close" onClick={closeCart} />
               {cartValue.result &&
                 cartValue.result.map((el, i) => (
                   <Cart
@@ -77,6 +82,8 @@ export default function Nav() {
                     image_url={el.image_urls}
                     quantity={el.quantity}
                     size_id={el.size_id}
+                    classOfCartWrap={classOfCartWrap}
+                    closeCart={closeCart}
                   />
                 ))}
               <input type="button" value="장바구니로 가기" />
