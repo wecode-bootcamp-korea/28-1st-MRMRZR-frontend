@@ -184,7 +184,7 @@ function ProductList() {
           return (
             <Link
               className="productLink"
-              to={`/product/detail/${product_id}`}
+              to={`/products/detail/${product_id}`}
               key={product_id}
             >
               <Product key={product_id} {...productInfo} />
@@ -194,7 +194,7 @@ function ProductList() {
         {isLoading && (
           <div class="loadingSpinner">
             <div class="loading">
-              <div></div>
+              <div />
             </div>
           </div>
         )}

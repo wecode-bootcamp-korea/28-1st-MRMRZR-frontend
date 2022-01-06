@@ -28,7 +28,16 @@
 
     ul.myMenu {
       font-size: 13px;
-      color: #1b1b1b;
+      color: hsl(0, 0%, 11%);
+
+      > li > div.cartWarp {
+        display: none;
+        background: #eee;
+
+        &.activated {
+          display: block;
+        }
+      }
     }
 
     > ul > li {
@@ -39,6 +48,40 @@
 
       &.women:hover .dropdown {
         transform: scale(1);
+      }
+
+      > div {
+        z-index: 10;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100vh;
+        background: #eee;
+
+        > span {
+          display: inline-block;
+          margin: 15px 0;
+          margin-left: 10px;
+          font-size: 18px;
+        }
+
+        .close {
+          position: absolute;
+          right: 15px;
+          top: 15px;
+        }
+
+        > input {
+          position: absolute;
+          bottom: 10px;
+          left: calc(50% - 45%);
+          width: 90%;
+          padding: 3px 0;
+          border: none;
+          background: #000;
+          color: #fff;
+        }
       }
     }
 

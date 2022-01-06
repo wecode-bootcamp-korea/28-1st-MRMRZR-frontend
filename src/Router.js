@@ -16,10 +16,9 @@ function Router() {
         <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/product-detail" element={<ProductDetail />} />
         <Route path="/LogoutButton" element={<LogoutButton />} />
-        <Route path="/product" element={<ProductList />} />
-        <Route path="/product/detail" element={<ProductDetail />}>
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/detail" element={<ProductDetail />}>
           <Route path=":product_id" element={<ProductDetail />} />
         </Route>
       </Routes>
