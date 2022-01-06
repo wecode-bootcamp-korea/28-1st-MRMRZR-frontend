@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "product_id": 1,
+      "name": "워터 패딩 점퍼",
+      "product_number": "J00001",
+      "price": 79000,
+      "is_new": false,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1577660002965-04865592fc60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 2,
+      "name": "에코 후드 재킷",
+      "product_number": "J00002",
+      "price": 89000,
+      "is_new": false,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1525430117313-640b917a03f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 3,
+      "name": "포켓터블 블루 재킷",
+      "product_number": "J00003",
+      "price": 49000,
+      "is_new": false,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1575383525035-e73a331018cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80"
+      ]
+    },
+    {
+      "product_id": 4,
+      "name": "콘트라스트 버튼 울 코트",
+      "product_number": "J00004",
+      "price": 109000,
+      "is_new": true,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1602742398695-745b5864dada?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 5,
+      "name": "컬러 데님 크롭 점퍼",
+      "product_number": "J00005",
+      "price": 49000,
+      "is_new": true,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1525792869870-de3b854c5bcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 6,
+      "name": "벨티드 패딩 점퍼",
+      "product_number": "J00006",
+      "price": 109000,
+      "is_new": false,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1589451320344-13f41e77d974?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 7,
+      "name": "플루이드 재킷",
+      "product_number": "J00007",
+      "price": 59000,
+      "is_new": true,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1557002666-513ca8eaa3c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      ]
+    },
+    {
+      "product_id": 8,
+      "name": "퍼프 슬리브 미디 드레스",
+      "product_number": "J00008",
+      "price": 115000,
+      "is_new": true,
+      "item": "아우터",
+      "image": [
+        "https://images.unsplash.com/photo-1606952222435-71dab5cc31d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+      ]
+    }
+  ]
+}
