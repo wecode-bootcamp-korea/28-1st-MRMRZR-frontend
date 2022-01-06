@@ -2,10 +2,11 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  margin: 100px 20px 0px 20px;
+  margin: 0px 20px 0px 20px;
 
   .userContainerView {
     display: flex;
+    margin-top: 200px;
 
     .userLogin {
       text-align: left;

@@ -6,6 +6,10 @@ $font-price: 11px;
 $font-description: 13px;
 
 .productListContent {
+  button {
+    all: unset;
+  }
+
   @include flex(center, center);
   flex-direction: column;
   width: 1200px;

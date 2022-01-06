@@ -54,7 +54,7 @@ export default function SignUp() {
       name: userName,
     };
 
-    fetch('http://7c51-211-106-114-186.ngrok.io/users/signup  ', {
+    fetch('http://13.124.143.239:8000/users/signup  ', {
       method: 'POST',
       body: JSON.stringify(userData),
     })
@@ -62,7 +62,7 @@ export default function SignUp() {
       .then(data => {
         if (data.result === 'CREATED') {
           alert('회원가입 되었습니다. 로그인을 진행해주세요!');
-          navigate('/product');
+          navigate('/login');
         } else {
           alert('아이디나 비밀번호를 확인해주세요.');
         }

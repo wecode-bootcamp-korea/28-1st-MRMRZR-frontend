@@ -16,7 +16,7 @@ export default function ProductDescription({ productVal }) {
       alert('사이즈를 선택해주세요.');
       return;
     } else {
-      fetch('http://7c51-211-106-114-186.ngrok.io/carts', {
+      fetch('http://13.124.143.239:8000/carts', {
         method: 'POST',
         body: JSON.stringify({
           product_id: productVal.product_id,

@@ -14,7 +14,7 @@ export default function Nav() {
 
   useEffect(() => {
     if (classOfCartWrap === 'activated') {
-      fetch('http://7c51-211-106-114-186.ngrok.io/carts')
+      fetch('http://13.124.143.239:8000/carts')
         .then(res => res.json())
         .then(res => {
           setCartValue(res);
@@ -62,7 +62,7 @@ export default function Nav() {
             검색
           </li>
           <li>보기</li>
-          <li>로그인</li>
+          <Link to="/login"> 로그인</Link>
           <li>도움말</li>
           <li>
             <span onClick={activateCart}>장바구니</span>

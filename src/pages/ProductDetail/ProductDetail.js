@@ -9,9 +9,7 @@ function ProductDetail() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(
-      `http://7c51-211-106-114-186.ngrok.io/products/detail/${params.product_id}`
-    )
+    fetch(`http://13.124.143.239:8000/products/detail/${params.product_id}`)
       .then(res => res.json())
       .then(res => {
         setProductVal(res.results);
