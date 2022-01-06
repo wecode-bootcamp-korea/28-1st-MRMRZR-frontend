@@ -2,6 +2,7 @@
   padding: 0 20px;
   margin: 80px 20px 20px 80px;
   justify-content: center;
+
   .signUpContainer {
     .signUpContainerHeader {
       padding: 40px 0 20px;
@@ -9,6 +10,7 @@
         font-size: 22px;
       }
     }
+
     .signUpEmail {
       display: flex;
 
@@ -19,12 +21,17 @@
         border: none;
         border-bottom: 1.5px solid #d3d3d3;
         width: 25%;
+        &:focus {
+          outline: none;
+        }
       }
       margin-top: 36px;
       line-height: 25px;
     }
+
     .signUpPassContent {
       display: flex;
+
       .signUpPassword {
         display: flex;
         flex-basis: 50%;
@@ -34,6 +41,9 @@
           border: none;
           border-bottom: 1.5px solid #d3d3d3;
           width: 100%;
+          &:focus {
+            outline: none;
+          }
         }
       }
 
@@ -44,18 +54,26 @@
           border: none;
           border-bottom: 1.5px solid #d3d3d3;
           width: 34%;
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
+
     .signupName {
       input {
         margin: 17px 0 15px;
         border: none;
         border-bottom: 1.5px solid #d3d3d3;
         width: 25%;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
+
   .checkboxs {
     font-size: 11px;
     margin-top: 36px;
@@ -74,6 +92,7 @@
       }
     }
   }
+
   .signUpBtn {
     button {
       min-width: 192px;

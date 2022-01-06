@@ -1,52 +1,73 @@
 import React, { useState, useEffect } from 'react';
-
-// import { BsExclamationCircle } from '';
 import '../Login/SignUp.scss';
+import { useNavigate } from 'react-router-dom';
+
+const isValidEmail =
+  /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+const isValidPw = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/;
 
 export default function SignUp() {
   const [userEmail, setUserEmail] = useState('');
-  const [userPW, setUserPW] = useState('');
-  const [user2PW, setUser2Pw] = useState('');
-  const [username, setUsername] = useState('');
-  const [isSuccess, setIsSuccess] = useState('');
+  const [userPw, setUserPw] = useState('');
+  const [userRePw, setUserRePw] = useState('');
+  const [userName, setUserName] = useState('');
+  const navigate = useNavigate();
 
   const handleEmail = event => {
     setUserEmail(event.target.value);
   };
 
-  const handlePW = event => {
-    setUserPW(event.target.value);
+  const handlePw = event => {
+    setUserPw(event.target.value);
   };
 
-  const handle2PW = event => {
-    setUser2Pw(event.target.value);
+  const handleRePw = event => {
+    setUserRePw(event.target.value);
   };
 
-  const handlename = event => {
-    setUsername(event.target.value);
+  const handleName = event => {
+    setUserName(event.target.value);
+  };
+
+  const validateCheck = () => {
+    const validator = {
+      email: isValidEmail.test(userEmail),
+      pw: isValidPw.test(userPw),
+      pwSame: userPw === userRePw,
+    };
+
+    let keyValue;
+    for (let key in validator) {
+      keyValue = !validator[key] ? key : null;
+      if (keyValue !== null) break;
+    }
+    return keyValue;
   };
 
   const joinUser = event => {
     event.preventDefault();
-    if (userPW === user2PW) {
-      const userData = {
-        email: userEmail,
-        password: userPW,
-        name: username,
-      };
 
-      fetch('http://b474-211-106-114-186.ngrok.io/users/signup ', {
-        method: 'POST',
-        body: JSON.stringify(userData),
-      })
-        .then(res => res.json())
-        .then(data => setIsSuccess(data));
-    }
+    // if (validateCheck() === null) {
+    const userData = {
+      email: userEmail,
+      password: userPw,
+      name: userName,
+    };
+
+    fetch('http://7c51-211-106-114-186.ngrok.io/users/signup  ', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.result === 'CREATED') {
+          alert('회원가입 되었습니다. 로그인을 진행해주세요!');
+          navigate('/product');
+        } else {
+          alert('아이디나 비밀번호를 확인해주세요.');
+        }
+      });
   };
-
-  useEffect(() => {
-    if (typeof setIsSuccess !== 'undefined') console.log(isSuccess);
-  }, [isSuccess]);
 
   return (
     <section className="makeSignUp">
@@ -57,9 +78,8 @@ export default function SignUp() {
         <div className="signUpEmail">
           <input
             type="text"
-            id="id"
-            class="int"
-            maxlength="20"
+            className="int"
+            maxLength="20"
             placeholder="이메일"
             onChange={handleEmail}
             value={userEmail}
@@ -69,24 +89,22 @@ export default function SignUp() {
           <div className="signUpPassword">
             <input
               type="password"
-              id="id"
-              class="int"
-              maxlength="20"
+              className="int"
+              maxLength="20"
               placeholder="비밀번호"
-              onChange={handlePW}
-              value={userPW}
+              onChange={handlePw}
+              value={userPw}
             />
           </div>
 
           <div className="signUpRePassword">
             <input
               type="password"
-              id="id"
-              class="int"
-              maxlength="20"
+              className="int"
+              maxLength="20"
               placeholder="비밀번호를 한 번 더 입력해 주십시오"
-              onChange={handle2PW}
-              value={user2PW}
+              onChange={handleRePw}
+              value={userRePw}
             />
           </div>
         </div>
@@ -94,12 +112,11 @@ export default function SignUp() {
         <div className="signupName">
           <input
             type="text"
-            id="id"
-            class="int"
-            maxlength="20"
+            className="int"
+            maxLength="20"
             placeholder="이름"
-            onChange={handlename}
-            value={username}
+            onChange={handleName}
+            value={userName}
           />
         </div>
 
@@ -135,7 +152,7 @@ export default function SignUp() {
       </div>
       <div className="signUpBtn">
         <button className="signup-button" type="button" onClick={joinUser}>
-          <span>계정만들기</span>
+          <span>계정 만들기</span>
         </button>
       </div>
     </section>

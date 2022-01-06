@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 // import React from 'react-dom';
 import './Login.scss';
 
-function Login() {
+const validEmail =
+  /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+const validPw = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/;
+
+export default function Login() {
   const [userEmail, setUserEmail] = useState();
-  const [userPW, setUserPW] = useState();
-  const [isSuccess, setIsSuccess] = useState();
+  const [userPw, setUserPw] = useState();
 
   const navigate = useNavigate();
 
@@ -15,31 +20,35 @@ function Login() {
     setUserEmail(event.target.value);
   };
 
-  const handlePW = event => {
-    setUserPW(event.target.value);
+  const handlePw = event => {
+    setUserPw(event.target.value);
   };
+
   const loginUser = event => {
     event.preventDefault();
 
     const userData = {
       email: userEmail,
-      password: userPW,
+      password: userPw,
     };
 
-    fetch('http://b474-211-106-114-186.ngrok.io/users/login', {
+    fetch('http://7c51-211-106-114-186.ngrok.io/users/login', {
       method: 'POST',
       body: JSON.stringify(userData),
     })
       .then(res => res.json())
       .then(data => {
-        if (data.result.status === 200) {
+        if (data.result.token) {
           localStorage.setItem('token', data.result.token);
-          navigate('/');
-        } else if (data.result.message === 'UNAUTHORIZED') {
+          navigate('/product');
+        } else if (data.result.message === 'INVALID_USER') {
           alert('아이디나 비밀번호를 확인해주세요.');
         }
       });
   };
+
+  const isValidLogin = validEmail.test(userEmail) && validPw.test(userPw);
+
   return (
     <main className="userContainer">
       <article className="userContainerView">
@@ -63,8 +72,8 @@ function Login() {
               id="pw"
               type="password"
               placeholder="비밀번호"
-              onChange={handlePW}
-              value={userPW}
+              onChange={handlePw}
+              value={userPw}
             />
           </div>
           <a
@@ -74,7 +83,12 @@ function Login() {
             비밀번호를 잊으셨습니까?
           </a>
           <div className="loginBtn">
-            <button type="button" onClick={loginUser}>
+            <button
+              type="button"
+              onClick={loginUser}
+              className={isValidLogin ? '' : 'deactivate'}
+              disabled={!isValidLogin}
+            >
               <span>로그인</span>
             </button>
           </div>
@@ -100,8 +114,8 @@ function Login() {
             </span>
           </div>
           <div className="userSignUpBtn">
-            <button type="button">
-              <span>계정 만들기</span>
+            <button className="goSignUp" type="button">
+              <Link to="/SignUp">계정 만들기</Link>
             </button>
           </div>
         </section>
@@ -109,5 +123,3 @@ function Login() {
     </main>
   );
 }
-
-export default Login;
