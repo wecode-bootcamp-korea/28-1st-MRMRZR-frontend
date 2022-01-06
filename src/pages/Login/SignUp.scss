@@ -1,0 +1,117 @@
+.makeSignUp {
+  padding: 0 20px;
+  margin: 80px 20px 20px 80px;
+  justify-content: center;
+
+  .signUpContainer {
+    .signUpContainerHeader {
+      padding: 40px 0 20px;
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    .signUpEmail {
+      display: flex;
+
+      margin-top: 36px;
+      line-height: 25px;
+      input {
+        margin: 0 0 15px;
+        border: none;
+        border-bottom: 1.5px solid #d3d3d3;
+        width: 25%;
+        &:focus {
+          outline: none;
+        }
+      }
+      margin-top: 36px;
+      line-height: 25px;
+    }
+
+    .signUpPassContent {
+      display: flex;
+
+      .signUpPassword {
+        display: flex;
+        flex-basis: 50%;
+        margin-right: 10px;
+        input {
+          margin: 17px 0 15px;
+          border: none;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .signUpRePassword {
+        flex-basis: 150%;
+        input {
+          margin: 17px 0 15px 15px;
+          border: none;
+          border-bottom: 1.5px solid #d3d3d3;
+          width: 34%;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+
+    .signupName {
+      input {
+        margin: 17px 0 15px;
+        border: none;
+        border-bottom: 1.5px solid #d3d3d3;
+        width: 25%;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .checkboxs {
+    font-size: 11px;
+    margin-top: 36px;
+    line-height: 2;
+
+    .checkbox-each {
+      line-height: 2;
+      input {
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+      span {
+        u {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .signUpBtn {
+    button {
+      min-width: 192px;
+      height: 40px;
+      width: auto;
+      background-color: black;
+      color: white;
+      margin-top: 34px;
+    }
+  }
+}
+
+.signUpBtn {
+  button {
+    min-width: 192px;
+    height: 40px;
+    width: auto;
+    background-color: black;
+    color: white;
+    margin-top: 34px;
+  }
+}
