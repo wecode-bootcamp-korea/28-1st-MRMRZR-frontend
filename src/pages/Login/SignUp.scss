@@ -1,66 +1,58 @@
-.signup {
+.makeSignUp {
   padding: 0 20px;
   margin: 80px 20px 20px 80px;
   justify-content: center;
-  .signupContainer {
-    .main-class-header {
+  .signUpContainer {
+    .signUpContainerHeader {
       padding: 40px 0 20px;
       h1 {
         font-size: 22px;
       }
     }
-    .email-input {
+    .signUpEmail {
       display: flex;
 
       margin-top: 36px;
       line-height: 25px;
       input {
         margin: 0 0 15px;
-        border-left-width: 0;
-        border-right-width: 0;
-        border-top-width: 0;
+        border: none;
         border-bottom: 1.5px solid #d3d3d3;
-        width: 49%;
+        width: 25%;
       }
       margin-top: 36px;
       line-height: 25px;
     }
-    .signup-repassword {
+    .signUpPassContent {
       display: flex;
-      .password-input {
+      .signUpPassword {
         display: flex;
         flex-basis: 50%;
         margin-right: 10px;
         input {
           margin: 17px 0 15px;
-          border-left-width: 0;
-          border-right-width: 0;
-          border-top-width: 0;
+          border: none;
           border-bottom: 1.5px solid #d3d3d3;
           width: 100%;
         }
       }
 
-      .repassword-input {
-        flex-basis: 50%;
+      .signUpRePassword {
+        flex-basis: 150%;
         input {
           margin: 17px 0 15px 15px;
-          border-left-width: 0;
-          border-right-width: 0;
-          border-top-width: 0;
+          border: none;
           border-bottom: 1.5px solid #d3d3d3;
-          width: 100%;
+          width: 34%;
         }
       }
     }
-    .signup-name {
+    .signupName {
       input {
         margin: 17px 0 15px;
-        border-left-width: 0;
-        border-right-width: 0;
-        border-top-width: 0;
+        border: none;
         border-bottom: 1.5px solid #d3d3d3;
-        width: 49.5%;
+        width: 25%;
       }
     }
   }
@@ -82,24 +74,25 @@
       }
     }
   }
-
-  .signup-button-area {
-    margin-top: 36px;
+  .signUpBtn {
+    button {
+      min-width: 192px;
+      height: 40px;
+      width: auto;
+      background-color: black;
+      color: white;
+      margin-top: 34px;
+    }
   }
 }
 
-.signup-button {
-  min-width: 192px;
-  height: 40px;
-  // width: auto;
-  background-color: black;
-  color: white;
-
-  .signup-button-area {
-    // display: flex;
-    // flex-flow: column nowrap;
-    // width: 100%;
-    span {
-    }
+.signUpBtn {
+  button {
+    min-width: 192px;
+    height: 40px;
+    width: auto;
+    background-color: black;
+    color: white;
+    margin-top: 34px;
   }
 }

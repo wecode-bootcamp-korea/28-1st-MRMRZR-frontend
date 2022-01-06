@@ -35,7 +35,7 @@ export default function SignUp() {
         name: username,
       };
 
-      fetch('http://cd66-59-187-202-238.ngrok.io/users/signup', {
+      fetch('http://b474-211-106-114-186.ngrok.io/users/signup ', {
         method: 'POST',
         body: JSON.stringify(userData),
       })
@@ -49,12 +49,12 @@ export default function SignUp() {
   }, [isSuccess]);
 
   return (
-    <section className="signup">
-      <div className="signupContainer">
-        <header className="main-class-header">
-          <h1 className="main-class-header-name">개인 정보</h1>
+    <section className="makeSignUp">
+      <div className="signUpContainer">
+        <header className="signUpContainerHeader">
+          <h1 className="signUpContainerTitle">개인 정보</h1>
         </header>
-        <div className="email-input">
+        <div className="signUpEmail">
           <input
             type="text"
             id="id"
@@ -65,10 +65,10 @@ export default function SignUp() {
             value={userEmail}
           />
         </div>
-        <div className="signup-repassword">
-          <div className="password-input">
+        <div className="signUpPassContent">
+          <div className="signUpPassword">
             <input
-              type="text"
+              type="password"
               id="id"
               class="int"
               maxlength="20"
@@ -78,9 +78,9 @@ export default function SignUp() {
             />
           </div>
 
-          <div className="repassword-input">
+          <div className="signUpRePassword">
             <input
-              type="text"
+              type="password"
               id="id"
               class="int"
               maxlength="20"
@@ -91,7 +91,7 @@ export default function SignUp() {
           </div>
         </div>
 
-        <div className="signup-name">
+        <div className="signupName">
           <input
             type="text"
             id="id"
@@ -133,7 +133,7 @@ export default function SignUp() {
           <span>광고성 정보 수신에 대한 동의</span>
         </div>
       </div>
-      <div className="signup-button-area">
+      <div className="signUpBtn">
         <button className="signup-button" type="button" onClick={joinUser}>
           <span>계정만들기</span>
         </button>

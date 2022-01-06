@@ -1,26 +1,24 @@
-.user-container {
+.userContainer {
   height: 100%;
   display: flex;
   justify-content: center;
   margin: 100px 20px 0px 20px;
-  .user-container-view {
+  .userContainerView {
     display: flex;
-    .login-view-content {
+    .userLogin {
       text-align: left;
-      .login-view {
+      .userLoginTitle {
         margin: 10px 0 0;
         h2 {
           font-size: 22px;
           margin: 0 0 16px;
         }
       }
-      .login-content-id {
+      .userLoginId {
         margin: 30px 0 20px;
         input {
           margin: 0 0 15px;
-          border-left-width: 0;
-          border-right-width: 0;
-          border-top-width: 0;
+          border: none;
           border-bottom: 1.5px solid #d3d3d3;
           width: 100%;
           .focus {
@@ -28,7 +26,7 @@
           }
         }
       }
-      .login-content-password {
+      .userLoginPassword {
         text-align: left;
         margin: 20px 0 20px;
         input {
@@ -45,7 +43,7 @@
       a {
         font-size: 11px;
       }
-      .login-button-area {
+      .loginBtn {
         button {
           min-width: 192px;
           height: 40px;
@@ -56,40 +54,41 @@
         }
       }
     }
-  }
-  .login-signup {
-    margin-left: 85px;
-    .signup-view {
-      margin: 10px 0 0;
-      h2 {
-        font-size: 22px;
-        margin: 0 0 16px;
+
+    .userSignUp {
+      margin-left: 85px;
+      .userSignUptitle {
+        margin: 10px 0 0;
+        h2 {
+          font-size: 22px;
+          margin: 0 0 16px;
+        }
       }
-    }
-    p {
-      font-size: 13px;
-      margin: 0 0 12px;
-      strong {
-        font-weight: 800;
-      }
-    }
-    .login-signup-text {
-      span {
+      p {
         font-size: 13px;
-        margin: 10px 0px 30px;
+        margin: 0 0 12px;
         strong {
           font-weight: 800;
         }
       }
-    }
-    .signup-button-area {
-      button {
-        min-width: 192px;
-        height: 40px;
-        width: auto;
-        background-color: black;
-        color: white;
-        margin-top: 120px;
+      .userSignUpNextText {
+        span {
+          font-size: 13px;
+          margin: 10px 0px 30px;
+          strong {
+            font-weight: 800;
+          }
+        }
+      }
+      .userSignUpBtn {
+        button {
+          min-width: 192px;
+          height: 40px;
+          width: auto;
+          background-color: black;
+          color: white;
+          margin-top: 120px;
+        }
       }
     }
   }
