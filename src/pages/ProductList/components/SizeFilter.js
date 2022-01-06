@@ -10,8 +10,8 @@ export default function SizeFilter({
   standard,
   checkedSize,
   selectSizeList,
-  toggleSizeFilter,
   isDropDownActive,
+  toggleSizeFilter,
 }) {
   return (
     <div className="sizeFilter">

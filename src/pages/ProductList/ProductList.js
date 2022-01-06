@@ -20,7 +20,10 @@ function ProductList() {
   const [productList, setProductList] = useState([]);
   const [selectSizeList, setSelectSizeList] = useState([]);
   const [selectSort, setSelectSort] = useState('');
+
   const [isDropDownActive, setIsDropDownActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [offset, setOffset] = useState(8);
 
   const navigate = useNavigate();
@@ -91,6 +94,27 @@ function ProductList() {
       });
   };
 
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight > scrollHeight - 10) {
+      setOffset(offset + 8);
+    }
+  };
+
+  const fetchProductList = () => {
+    setIsLoading(true);
+
+    fetch(`${API}?offset=${offset}&limit=8`)
+      .then(res => res.json())
+      .then(data => {
+        setProductList([...productList, ...data.results]);
+        setIsLoading(false);
+      });
+  };
+
   useEffect(() => {
     (selectSizeList.length > 0 || selectSort !== '') && setQueryUrl();
   }, [selectSizeList, selectSort]);
@@ -100,31 +124,18 @@ function ProductList() {
   }, [search]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     fetch(`${API}`)
       .then(res => res.json())
-      .then(data => setProductList(data.results));
+      .then(data => {
+        setProductList(data.results);
+        setIsLoading(false);
+      });
   }, []);
 
-  const fetchProductList = () => {
-    fetch(`${API}?offset=${offset}&limit=8`)
-      .then(res => res.json())
-      .then(data => {
-        setProductList([...productList, ...data.results]);
-      });
-  };
-
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-
-    if (scrollTop + clientHeight > scrollHeight) {
-      setOffset(offset + 8);
-    }
-  };
-
   useEffect(() => {
-    offset && fetchProductList();
+    offset > 8 && fetchProductList();
   }, [offset]);
 
   useEffect(() => {
@@ -150,10 +161,7 @@ function ProductList() {
             name="사이즈"
             standard="size"
             checkedSize={checkedSize}
-            sort={setQueryUrl}
-            search={search}
             selectSizeList={selectSizeList}
-            selectSort={selectSort}
             isDropDownActive={isDropDownActive}
             toggleSizeFilter={toggleSizeFilter}
           />
@@ -183,6 +191,13 @@ function ProductList() {
             </Link>
           );
         })}
+        {isLoading && (
+          <div class="loadingSpinner">
+            <div class="loading">
+              <div></div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
