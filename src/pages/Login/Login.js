@@ -40,7 +40,7 @@ export default function Login() {
       .then(data => {
         if (data.result.token) {
           localStorage.setItem('token', data.result.token);
-          navigate('/product');
+          navigate('/products');
         } else if (data.result.message === 'INVALID_USER') {
           alert('아이디나 비밀번호를 확인해주세요.');
         }
