@@ -5,8 +5,8 @@ import Product from './components/Product';
 import SizeFilter from './components/SizeFilter';
 import './ProductList.scss';
 
-const API = '/data/ProductListData/ProductListData.json';
-// BACK통신 API 주소 : 'http://10.58.7.224:8000/products';
+const API = 'http://10.58.3.21:8000/products';
+// '/data/ProductListData/ProductListData.json';
 
 const changeSizeToNumbers = {
   xs: 1,
@@ -24,7 +24,7 @@ function ProductList() {
   const [isDropDownActive, setIsDropDownActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [offset, setOffset] = useState(8);
+  const [offset, setOffset] = useState(0);
 
   const navigate = useNavigate();
   const { search, pathname } = useLocation();
@@ -107,10 +107,11 @@ function ProductList() {
   const fetchProductList = () => {
     setIsLoading(true);
 
-    fetch(`${API}?offset=${offset}&limit=8`)
+    fetch(`${API}${search}&offset=${offset}&limit=8`)
       .then(res => res.json())
       .then(data => {
         setProductList([...productList, ...data.results]);
+        setOffset(offset + 8);
         setIsLoading(false);
       });
   };
@@ -192,9 +193,10 @@ function ProductList() {
           );
         })}
         {isLoading && (
-          <div class="loadingSpinner">
-            <div class="loading">
-              <div />
+          <div className="loadingSpinner">
+            <div className="loading">
+              <div></div>
+
             </div>
           </div>
         )}
