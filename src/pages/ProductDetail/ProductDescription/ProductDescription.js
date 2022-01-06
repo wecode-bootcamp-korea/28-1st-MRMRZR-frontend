@@ -4,31 +4,28 @@ import './ProductDescription.scss';
 
 export default function ProductDescription({ productVal }) {
   // const testSizes = ['XS', 'S', 'M', 'L', 'XL'];
-  const [sizeSelected, setSizeSelected] = useState(false);
   const [selectedSize, setSelectedSize] = useState('');
 
   const activateBtn = () => {
-    if (sizeSelected === true) return;
-    setSizeSelected(true);
+    if (selectedSize === true) return;
   };
 
   const addToCart = e => {
     e.preventDefault();
-    if (!sizeSelected) {
+    if (!selectedSize) {
       alert('사이즈를 선택해주세요.');
       return;
     } else {
       fetch('http://7c51-211-106-114-186.ngrok.io/carts', {
         method: 'POST',
         body: JSON.stringify({
-          product_id: productVal.product_number,
+          product_id: productVal.id,
           size_id: selectedSize,
           quantity: 1,
         }),
       })
         .then(response => response.json())
         .then(result => console.log('결과: ', result));
-      // ToDo : 통신완료후 갯수변경로직
       alert('추가되었습니다.');
     }
   };

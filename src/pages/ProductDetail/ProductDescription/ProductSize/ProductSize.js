@@ -2,8 +2,16 @@ import React from 'react';
 import './ProductSize.scss';
 
 export default function ProductSize({ currSize, currStock, onButtonClick }) {
+  const sizeTable = {
+    XS: 1,
+    S: 2,
+    M: 3,
+    L: 4,
+    XL: 5,
+  };
+
   const clicked = e => {
-    onButtonClick(e.target.id);
+    onButtonClick(sizeTable[e.target.id]);
   };
 
   return (

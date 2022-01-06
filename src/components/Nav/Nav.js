@@ -13,7 +13,7 @@ export default function Nav() {
   // todo : 적용버튼 클릭 시 fetch로 변경 요청
 
   useEffect(() => {
-    fetch('http://7c51-211-106-114-186.ngrok.io/carts/2')
+    fetch('http://7c51-211-106-114-186.ngrok.io/carts')
       .then(res => res.json())
       .then(res => {
         setCartValue(res);

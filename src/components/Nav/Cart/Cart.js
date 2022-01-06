@@ -13,9 +13,6 @@ export default function Cart({
   size_id,
 }) {
   const [currQuantity, setCurrQuantity] = useState(quantity);
-
-  const sizeTable = {};
-
   const addQuantity = e => {
     e.preventDefault();
     setCurrQuantity(prev => prev + 1);
