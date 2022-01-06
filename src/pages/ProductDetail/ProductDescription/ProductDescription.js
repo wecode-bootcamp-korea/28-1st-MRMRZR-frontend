@@ -19,13 +19,11 @@ export default function ProductDescription({ productVal }) {
       fetch('http://7c51-211-106-114-186.ngrok.io/carts', {
         method: 'POST',
         body: JSON.stringify({
-          product_id: productVal.id,
+          product_id: productVal.product_id,
           size_id: selectedSize,
           quantity: 1,
         }),
-      })
-        .then(response => response.json())
-        .then(result => console.log('결과: ', result));
+      });
       alert('추가되었습니다.');
     }
   };

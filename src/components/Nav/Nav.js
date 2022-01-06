@@ -20,6 +20,8 @@ export default function Nav() {
       });
   }, []);
 
+  console.log(cartValue);
+
   const activateCart = () => {
     if (classOfCartWrap === '') setClassOfCartWrap('activated');
     if (classOfCartWrap === 'activated') setClassOfCartWrap('');
@@ -29,7 +31,7 @@ export default function Nav() {
     <nav className="Nav">
       <div className="navInner">
         <h1>
-          <Link to="/Main">
+          <Link to="/products">
             MRMR
             <br />
             ZARA
@@ -40,7 +42,7 @@ export default function Nav() {
             <Link to="/Main">New Arrivals</Link>
           </li>
           <li className="women">
-            <Link to="/Main">WOMEN</Link>
+            <Link to="/products">WOMEN</Link>
             <Dropdown />
           </li>
           <li>MEN</li>
@@ -72,7 +74,7 @@ export default function Nav() {
                     product_number={el.product_number}
                     price={el.price}
                     size={el.size}
-                    image_url={el.image_url}
+                    image_url={el.image_urls}
                     quantity={el.quantity}
                     size_id={el.size_id}
                   />

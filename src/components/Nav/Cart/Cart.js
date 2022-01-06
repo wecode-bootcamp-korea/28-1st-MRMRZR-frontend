@@ -37,12 +37,9 @@ export default function Cart({
 
   const deleteInCart = e => {
     e.preventDefault();
-    fetch('API 주소', {
+    fetch('http://7c51-211-106-114-186.ngrok.io/carts/1', {
       method: 'DELETE',
-    })
-      .then(response => response.json())
-      .then(data => console.log(data));
-    // 빈 객체를 받으면 성공?
+    });
   };
 
   return (
