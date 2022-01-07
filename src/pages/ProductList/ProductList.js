@@ -5,7 +5,8 @@ import Product from './components/Product';
 import SizeFilter from './components/SizeFilter';
 import './ProductList.scss';
 
-const API = 'http://13.124.143.239:8000/products';
+// const API = 'http://13.124.143.239:8000/products';
+const API = 'http://8a05-211-106-114-186.ngrok.io/products';
 
 const changeSizeToNumbers = {
   xs: 1,
@@ -84,6 +85,7 @@ function ProductList() {
     setSelectSizeList([]);
     setSelectSort('');
     setIsDropDownActive(false);
+    setOffset(0);
 
     navigate(`${pathname}`);
     fetch(`${API}`)
@@ -107,9 +109,9 @@ function ProductList() {
     setIsLoading(true);
     let offsetQuery = '';
 
-    if (selectSizeList.length > 0 || selectSort !== '') {
+    if (selectSizeList.length > 0) {
       offsetQuery = `${search}&offset=${offset}&limit=8`;
-    } else if (selectSizeList.length === 0 || selectSort === '') {
+    } else if (selectSizeList.length === 0) {
       offsetQuery = `?offset=${offset}&limit=8`;
     }
 
@@ -174,10 +176,10 @@ function ProductList() {
         </div>
         <div className="sort">
           <button className="ascending" onClick={clickedSort}>
-            오름차순
+            가격 낮은 순
           </button>
           <button className="descending" onClick={clickedSort}>
-            내림차순
+            가격 높은 순
           </button>
         </div>
       </div>
