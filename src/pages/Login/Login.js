@@ -32,7 +32,8 @@ export default function Login() {
       password: userPw,
     };
 
-    fetch('http://13.124.143.239:8000/users/login', {
+    // fetch('http://13.124.143.239:8000/users/login', {
+    fetch('http://8a05-211-106-114-186.ngrok.io/users/login', {
       method: 'POST',
       body: JSON.stringify(userData),
     })

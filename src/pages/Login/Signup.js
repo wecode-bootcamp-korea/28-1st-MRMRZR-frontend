@@ -54,7 +54,8 @@ export default function SignUp() {
       name: userName,
     };
 
-    fetch('http://13.124.143.239:8000/users/signup  ', {
+    // fetch('http://13.124.143.239:8000/users/signup', {
+    fetch(' http://8a05-211-106-114-186.ngrok.io/users/signup', {
       method: 'POST',
       body: JSON.stringify(userData),
     })

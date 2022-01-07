@@ -4,6 +4,7 @@ import './ProductDescription.scss';
 
 export default function ProductDescription({ productVal }) {
   // const testSizes = ['XS', 'S', 'M', 'L', 'XL'];
+  const accessToken = localStorage.getItem('token');
   const [selectedSize, setSelectedSize] = useState('');
 
   const activateBtn = () => {
@@ -16,8 +17,14 @@ export default function ProductDescription({ productVal }) {
       alert('사이즈를 선택해주세요.');
       return;
     } else {
-      fetch('http://13.124.143.239:8000/carts', {
+      // fetch('http://13.124.143.239:8000/carts', {
+      fetch('http://8a05-211-106-114-186.ngrok.io/carts', {
         method: 'POST',
+        headers: {
+          Authorization: accessToken,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
         body: JSON.stringify({
           product_id: productVal.product_id,
           size_id: selectedSize,
@@ -42,7 +49,7 @@ export default function ProductDescription({ productVal }) {
 
   return (
     <div className="productDescription">
-      <h2>{productVal.name}</h2>
+      <h2>{productVal.product_name}</h2>
       <p className="itemCode">{productVal.product_number}</p>
       <p className="desctiption">{productVal.description}</p>
       <div className="price">{productVal.price} KRW</div>

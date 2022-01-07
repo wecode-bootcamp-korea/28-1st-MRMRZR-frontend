@@ -11,10 +11,19 @@ export default function Nav() {
   const [classOfCartWrap, setClassOfCartWrap] = useState('');
   // todo : 장바구니 수량 state로 관리하고, +-버튼 눌렀을 때 setState
   // todo : 적용버튼 클릭 시 fetch로 변경 요청
+  const accessToken = localStorage.getItem('token');
 
   useEffect(() => {
     if (classOfCartWrap === 'activated') {
-      fetch('http://13.124.143.239:8000/carts')
+      // fetch('http://13.124.143.239:8000/carts')
+      fetch('http://8a05-211-106-114-186.ngrok.io/carts', {
+        method: 'GET',
+        headers: {
+          Authorization: accessToken,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      })
         .then(res => res.json())
         .then(res => {
           setCartValue(res);

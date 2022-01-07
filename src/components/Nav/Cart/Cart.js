@@ -14,6 +14,7 @@ export default function Cart({
   closeCart,
 }) {
   const [currQuantity, setCurrQuantity] = useState(quantity);
+  const accessToken = localStorage.getItem('token');
 
   const addQuantity = e => {
     e.preventDefault();
@@ -27,8 +28,15 @@ export default function Cart({
 
   const modQuantity = e => {
     e.preventDefault();
-    fetch('http://13.124.143.239:8000/carts', {
+
+    // fetch('http://13.124.143.239:8000/carts', {
+    fetch('http://8a05-211-106-114-186.ngrok.io/carts', {
       method: 'POST',
+      headers: {
+        Authorization: accessToken,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
       body: JSON.stringify({
         product_id: product_id,
         size_id: size_id,
@@ -43,8 +51,15 @@ export default function Cart({
 
   const deleteInCart = e => {
     closeCart();
-    fetch(`http://13.124.143.239:8000/carts/${cart_id}`, {
+
+    // fetch(`http://13.124.143.239:8000/carts/${cart_id}`, {
+    fetch(`http://8a05-211-106-114-186.ngrok.io/carts/${cart_id}`, {
       method: 'DELETE',
+      headers: {
+        Authorization: accessToken,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
     })
       .then(res => res.json())
       .then(res => {
