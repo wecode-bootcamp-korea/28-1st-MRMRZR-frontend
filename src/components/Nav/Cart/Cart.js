@@ -27,7 +27,7 @@ export default function Cart({
 
   const modQuantity = e => {
     e.preventDefault();
-    fetch('http://7c51-211-106-114-186.ngrok.io/carts', {
+    fetch('http://13.124.143.239:8000/carts', {
       method: 'POST',
       body: JSON.stringify({
         product_id: product_id,
@@ -43,7 +43,7 @@ export default function Cart({
 
   const deleteInCart = e => {
     closeCart();
-    fetch(`http://7c51-211-106-114-186.ngrok.io/carts/${cart_id}`, {
+    fetch(`http://13.124.143.239:8000/carts/${cart_id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())

@@ -5,8 +5,7 @@ import Product from './components/Product';
 import SizeFilter from './components/SizeFilter';
 import './ProductList.scss';
 
-const API = 'http://10.58.3.21:8000/products';
-// '/data/ProductListData/ProductListData.json';
+const API = 'http://13.124.143.239:8000/products';
 
 const changeSizeToNumbers = {
   xs: 1,
@@ -106,12 +105,18 @@ function ProductList() {
 
   const fetchProductList = () => {
     setIsLoading(true);
+    let offsetQuery = '';
 
-    fetch(`${API}${search}&offset=${offset}&limit=8`)
+    if (selectSizeList.length > 0 || selectSort !== '') {
+      offsetQuery = `${search}&offset=${offset}&limit=8`;
+    } else if (selectSizeList.length === 0 || selectSort === '') {
+      offsetQuery = `?offset=${offset}&limit=8`;
+    }
+
+    fetch(`${API}${offsetQuery}`)
       .then(res => res.json())
       .then(data => {
         setProductList([...productList, ...data.results]);
-        setOffset(offset + 8);
         setIsLoading(false);
       });
   };
@@ -136,15 +141,12 @@ function ProductList() {
   }, []);
 
   useEffect(() => {
-    offset > 8 && fetchProductList();
-  }, [offset]);
-
-  useEffect(() => {
+    offset > 7 && offset < 40 && fetchProductList();
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  });
+  }, [offset]);
 
   return (
     <div className="productListContent">
@@ -196,7 +198,6 @@ function ProductList() {
           <div className="loadingSpinner">
             <div className="loading">
               <div></div>
-
             </div>
           </div>
         )}

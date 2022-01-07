@@ -106,5 +106,12 @@
         transform: scale(1);
       }
     }
+    // Link 태그 스타일 추가.
+    a {
+      display: inline-block;
+      margin-left: 20px;
+      cursor: pointer;
+      padding: 2rem 0;
+    }
   }
 }
