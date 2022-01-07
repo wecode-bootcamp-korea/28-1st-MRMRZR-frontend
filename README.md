@@ -49,3 +49,5 @@ Common: Git, GitHub, Slack, Trello, Notion
 ### 프로덕트리스트
 
 ### 프로덕트디테일
+
+### 장바구니
