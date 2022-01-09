@@ -14,7 +14,7 @@ ZARA 홈페이지를 참고해 제작한 커머스사이트입니다.
 
 김선주
 
-안현재
+<a href="https://github.com/hyeonze" > 안현재 </a>
 
 <a href="https://github.com/wjdgotn77" > 정해수 </a>
 
@@ -38,7 +38,7 @@ ZARA 홈페이지를 참고해 제작한 커머스사이트입니다.
 **Login / Sign Up**
 
 ### 안현재
-**Navigation Bar**
+**Navigation Bar**</br>
 모든 페이지에서 공동적으로 사용할 네브바 컴포넌트
 1. 장바구니를 누르면 우측에서 현재 장바구니 현황을 백엔드와 통신을 해서 화면에 표시
 2. 장바구니에서 수량 수정 및 삭제기능 구현
