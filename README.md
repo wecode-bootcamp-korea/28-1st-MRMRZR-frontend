@@ -9,6 +9,7 @@ ZARA 홈페이지를 참고해 제작한 커머스사이트입니다.
 ### 개발기간 ( 총 11일)
 
 - 2021/12/27 ~ 2022/1/7
+- 프로젝트 관리 : <a href="https://trello.com/b/2f3aGMvW/first-sprint" >Trello</a>
 
 ### FRONTEND (3명)
 
