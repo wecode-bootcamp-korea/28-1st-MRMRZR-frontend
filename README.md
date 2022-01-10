@@ -20,11 +20,7 @@ ZARA 홈페이지를 참고해 제작한 커머스사이트입니다.
 
 ### BACKEND (3명)
 
-이정석
-
-장우경
-
-지원석
+이정석, 장우경, 지원석(https://github.com/wecode-bootcamp-korea/28-1st-MRMRZR-backend)
 
 ## 적용 기술 및 구현 기능 적용 기술
 
