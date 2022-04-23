@@ -13,7 +13,7 @@ ZARA 홈페이지를 참고해 제작한 커머스사이트입니다.
 
 ### FRONTEND (3명)
 
-<a href="https://github.com/sseunn1" >김선주</a>
+<a href="https://github.com/sseunn" >김선주</a>
 
 <a href="https://github.com/hyeonze" > 안현재 </a>
 
